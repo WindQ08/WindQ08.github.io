@@ -10,7 +10,7 @@
 
     <!--Description-->
     
-        <meta name="description" content="开学第一周接触的，最简单的栈溢出学习，原理级别。一、栈溢出的概念　　首先我们要知道在计算机内部，一块内存的地址是连续的，是上下连贯的。其次，程序在运行过程中，为了临时存取数据的需要，一般都要分配一些内存空间，通常称这些空间为缓冲区，（操作系统所使用的缓冲区，又被称为“堆栈”，在各个操作进程之间，指令">
+        <meta name="description" content="开学第一周接触的，最简单的栈溢出学习，原理级别。">
     
 
     <!--Author-->
@@ -169,7 +169,8 @@
         
 
         <!-- Post Content -->
-        <h6 id="开学第一周接触的，最简单的栈溢出学习，原理级别。"><a href="#开学第一周接触的，最简单的栈溢出学习，原理级别。" class="headerlink" title="开学第一周接触的，最简单的栈溢出学习，原理级别。"></a>开学第一周接触的，最简单的栈溢出学习，原理级别。</h6><h2 id="一、栈溢出的概念"><a href="#一、栈溢出的概念" class="headerlink" title="一、栈溢出的概念"></a>一、栈溢出的概念</h2><p>　　首先我们要知道在计算机内部，一块内存的地址是连续的，是上下连贯的。其次，程序在运行过程中，为了临时存取数据的需要，一般都要分配一些内存空间，通常称这些空间为缓冲区，（操作系统所使用的缓冲区，又被称为“堆栈”，在各个操作进程之间，指令会被临时储存在“堆栈”当中。）当我们定义的数据所需要占用的内存超过了栈的大小时，就会发生栈溢出。   </p>
+        <h6 id="开学第一周接触的，最简单的栈溢出学习，原理级别。"><a href="#开学第一周接触的，最简单的栈溢出学习，原理级别。" class="headerlink" title="开学第一周接触的，最简单的栈溢出学习，原理级别。"></a>开学第一周接触的，最简单的栈溢出学习，原理级别。</h6><a id="more"></a>        
+<h2 id="一、栈溢出的概念"><a href="#一、栈溢出的概念" class="headerlink" title="一、栈溢出的概念"></a>一、栈溢出的概念</h2><p>　　首先我们要知道在计算机内部，一块内存的地址是连续的，是上下连贯的。其次，程序在运行过程中，为了临时存取数据的需要，一般都要分配一些内存空间，通常称这些空间为缓冲区，（操作系统所使用的缓冲区，又被称为“堆栈”，在各个操作进程之间，指令会被临时储存在“堆栈”当中。）当我们定义的数据所需要占用的内存超过了栈的大小时，就会发生栈溢出。   </p>
 <p>　　举个例子，比如我们定义一个C程序的函数：    </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">　　void vul()   </span><br><span class="line">　　&#123;    </span><br><span class="line">　　　　char s[32];    </span><br><span class="line">　　　　read(0, s, 128);    </span><br><span class="line">　　&#125;</span><br></pre></td></tr></table></figure>
 <p>　　当我们定义了一个32字节的字符串s时，内存中会申请一个32字节的空间来保存这个字符串的数据，但read函数的读取字长参数是128[read函数的三个参数分别是fd（0标准输入，1标准输出），读取起始地址，读取字长]，明显超过了数组的字节长度，32位以后的数据就会“涌出”预留空间，缓冲区内其他部分“进发”，这就是栈溢出。　　　
@@ -249,10 +250,6 @@
 <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 footer-categories">
     <h2>Categories</h2>
     <ul>
-        
-        <li>
-            <a class="footer-post" href="/categories/这是分类/">这是分类</a>
-        </li>
         
         <li>
             <a class="footer-post" href="/categories/二进制安全/">二进制安全</a>
