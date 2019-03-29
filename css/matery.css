@@ -163,8 +163,8 @@ mark {
 }
 
 .bg-color {
-    background-image: linear-gradient(to right, #deb887 0%, #eacda3 100%);
-}
+    background-image: linear-gradient(to right, #8fd3f4 0%, #84fab0 100%);
+}/*#deb887 0%, #eacda3 100% 很好看的金色*/
 
 .text-color {
     color: #0f9d58 !important;
@@ -179,7 +179,7 @@ mark {
     position: fixed;
     bottom: 0;
     z-index: 300;
-    background: linear-gradient(to right, #84fab0 0%, #8fd3f4 100%);
+    background: linear-gradient(to right, #84fab0 0%, #2c8f95 100%);
     opacity: 0.8;
 }
 
