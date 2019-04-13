@@ -474,7 +474,6 @@ io<span class="token punctuation">.</span>send<span class="token punctuation">(<
 
 io<span class="token punctuation">.</span>interactive<span class="token punctuation">(</span><span class="token punctuation">)</span>
 </code></pre>
-<p><img src="/2019/03/27/zhan-yi-chu-er/2019-03-19-栈溢出（一）_1.png" alt="这是一个暗搓搓的read示意图"></p>
 
             </div>
             <hr>
@@ -521,30 +520,24 @@ io<span class="token punctuation">.</span>interactive<span class="token punctuat
         
         <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/03/27/zhan-yi-chu-er/">
+                <a href="/2019/04/13/zhan-yi-chu-san/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="栈溢出（二）">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="栈溢出（三）">
                         
-                        <span class="card-title">栈溢出（二）</span>
+                        <span class="card-title">栈溢出（三）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">这次与上一篇文章的不同的是，原代码中没有自带的恶意代码，这时候我们就要考虑自己填塞一段恶意代码以达到目的。
-　　源程序代码如下：     
-#include&lt;stdio.h>
-char str[100];
-void vul()
-{
- </div>
+                    <div class="summary">        
+一、了解一下libc　　libc动态链接库中的函数被广泛使用，所以有大概率可以在内存中找到libc动态库。该库内包含了一些系统级的函数，比如system()，所以可以尝试用这些系统级的函数取得控制权。再比如，这样的参数有可</div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-27
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-13
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -557,7 +550,6 @@ void vul()
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -728,7 +720,7 @@ void vul()
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">2.2k</span>
+                <span class="white-color">3.1k</span>
             
 
             
