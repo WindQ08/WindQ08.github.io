@@ -407,14 +407,14 @@ Command Injection命令注入，根据我这篇文章的第二条（我就是“
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        768
+                        1.1k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        2 分
+                        3 分
                     </div>
                     
                 
@@ -441,6 +441,11 @@ Command Injection命令注入，根据我这篇文章的第二条（我就是“
 <pre class=" language-bash"><code class="language-bash">GET /DVWA-master/vulnerabilities/csrf/?password_new<span class="token operator">=</span>123123<span class="token operator">&amp;</span>password_conf<span class="token operator">=</span>123123<span class="token operator">&amp;</span>Change<span class="token operator">=</span>Change HTTP/1.1
 </code></pre>
 <p>谁要是点了这个，密码就会被改成123123了（当然是在理想情况下）。</p>
+<h2 id="File-Inclusion"><a href="#File-Inclusion" class="headerlink" title="File Inclusion"></a>File Inclusion</h2><p>文件包含，远程包含的话要把配置文件里<code>allow_url_include</code>，<code>allow_url_fopen</code>参数要设置成<code>On</code>。运气好的话可以执行包含后的代码，php漏洞居多。<br>有以下函数，且参数（文件）是可控的，就可以操作</p>
+<blockquote>
+<p>include(如果找不到文件，会警告)<br>require(如果找不到文件，会报错)<br>include_once()<br>require_once()</p>
+</blockquote>
+<p>接下来我们看一下这道题<br><img src="/2019/04/14/dvwa-xue-xi-low/4.png" alt="文件包含_题"><br>给了三个文件…不重要，没有啥太重要的信息，我们来看一下url<br><img src="/2019/04/14/dvwa-xue-xi-low/5.png" alt="文件包含_url"><br>这个4是我改过的，正常的话只到3。（提一下，按理说page是执行，file是文件读取，即不能操作，只能读那种）<br>很明显我们没有看file4.php的权力，但我认为按理说file4是存在的，于是我改了参数，也确实成功了，存在文件4，且我们有权浏览它，如下图<br><img src="/2019/04/14/dvwa-xue-xi-low/6.png" alt="文件包含_file4.php"><br>文件包含比较常见的是和目录穿越用在一起，如果是执行漏洞，可以<code>http://192.168.80.140/fileincl/example1.php?page=http://192.168.80.140/upload/images/webshell.php?cmd=ls</code><br>如果是读取漏洞，可以<code>http://192.168.80.140/dirtrav/example1.php?file=../../../../../../../../etc/passwd</code></p>
 
             </div>
             <hr>
@@ -688,7 +693,7 @@ Command Injection命令注入，根据我这篇文章的第二条（我就是“
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">4.6k</span>
+                <span class="white-color">4.9k</span>
             
 
             
