@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>网站渗透测试原理及详细过程</title>
+      <link href="/2019/04/16/wang-zhan-shen-tou-ce-shi-yuan-li-ji-xiang-xi-guo-cheng/"/>
+      <url>/2019/04/16/wang-zhan-shen-tou-ce-shi-yuan-li-ji-xiang-xi-guo-cheng/</url>
+      
+        <content type="html"><![CDATA[<h2 id="此处省略了原文的’零’，’一’，’二’，有兴趣的可以点文章最下面的原文链接查看，本文仅作为纯技术方面的个人总结。"><a href="#此处省略了原文的’零’，’一’，’二’，有兴趣的可以点文章最下面的原文链接查看，本文仅作为纯技术方面的个人总结。" class="headerlink" title="此处省略了原文的’零’，’一’，’二’，有兴趣的可以点文章最下面的原文链接查看，本文仅作为纯技术方面的个人总结。"></a>此处省略了原文的’零’，’一’，’二’，有兴趣的可以点文章最下面的原文链接查看，本文仅作为纯技术方面的个人总结。</h2><h2 id="一、信息收集（历来测试第一条，铁打的信息收集）"><a href="#一、信息收集（历来测试第一条，铁打的信息收集）" class="headerlink" title="一、信息收集（历来测试第一条，铁打的信息收集）"></a>一、信息收集（历来测试第一条，铁打的信息收集）</h2><h4 id="1-网络-公开-信息收集"><a href="#1-网络-公开-信息收集" class="headerlink" title="1.网络(公开)信息收集"></a>1.网络(公开)信息收集</h4><p>直接进行网络扫描不是这一步要干的事，循序渐进才对。先找一些公开的，个人认为会包含类似于“社工”的东西。详细的说，有google hacking（百度也行，意在大量获取周边的有用信息），whois查询，dns等。如果考虑进行社会工程学的话，这里还可以相应从邮件列表/新闻组中获取目标系统中一些边缘信息如内部员工帐号组成，身份识别方式，邮件联系地址等。</p><p>(1)使用whois查询目标域名的DNS服务器<br>(2)nslookup   [nslookup用于查询DNS的记录，查询域名解析是否正常]</p><blockquote><p>set type=all</p><p><domain><br>server <ns server><br>set q=all<br>ls -d <domain><br>   涉及的工具包括：Google,<a href="http://www.nosec.org/web/index.php?q=demon" target="_blank" rel="noopener">Demon</a>,<a href="http://www.webhosting.info/" target="_blank" rel="noopener">webhosting.info</a>,<a href="http://worm.ccert.edu.cn/GoogleHacking/Apollo/" target="_blank" rel="noopener">Apollo</a>,<a href="http://snakeoillabs.com/" target="_blank" rel="noopener">Athena</a>,<a href="http://snakeoillabs.com/downloads/GHDB.xml" target="_blank" rel="noopener">GHDB.XML</a>,<a href="http://uptime.netcraft.com/up/graph" target="_blank" rel="noopener">netcraft</a>,<a href="http://www.seologs.com/ip-domains.html" target="_blank" rel="noopener">seologs</a>。<br>(3)搜索引擎的常用语法<br>   <code>site</code>:用于搜索指定的站点关键字。比如<code>site:www.nosec.org</code>，比如用<code>site:nosec.org</code>搜索该域名下的所有子域名的页面，比如用<code>site:org.cn</code>搜索中国政府部门的网站。</domain></ns></domain></p></blockquote><h4 id="2-目标系统信息收集（目前不太懂。。。）"><a href="#2-目标系统信息收集（目前不太懂。。。）" class="headerlink" title="2.目标系统信息收集（目前不太懂。。。）"></a>2.目标系统信息收集（目前不太懂。。。）</h4><p>通过上面一步，我们应当可以简单的描绘出目标系统的网络结构，如公司网络所在区域，子公司IP地址分布，VPN接入地址等。这里特别要注意一些比较偏门的HOST名称地址，如一些<code>backup</code>开头或者<code>temp</code>开关的域名很可能就是一台备份服务器，其安全性很可能做的不够。<br>从获取的地址列表中进行系统判断，了解其组织架构及操作系统使用情况。最常用的方法的是目标所有IP网段扫描。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Web安全 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 渗透测试 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>我自己关于安全的一点想法(持续更新)</title>
       <link href="/2019/04/14/wo-zi-ji-guan-yu-an-quan-de-yi-dian-xiang-fa-chi-xu-geng-xin/"/>
       <url>/2019/04/14/wo-zi-ji-guan-yu-an-quan-de-yi-dian-xiang-fa-chi-xu-geng-xin/</url>

