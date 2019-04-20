@@ -407,7 +407,7 @@ Command Injection命令注入，根据我这篇文章的第二条（我就是“
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.5k
+                        1.6k
                     </div>
                     
 
@@ -450,6 +450,7 @@ Command Injection命令注入，根据我这篇文章的第二条（我就是“
 <blockquote>
 <p>1.就是真的能上传上去<br>2.上传文件之后能找到文件的位置和文件名<br>3.这个文件能被成功执行<br>没有这三个条件就难以利用。相对应的，如果能不让攻击者找到目标文件位置，或者重命名这个文件，再或者不给可执行权限，再再或者把上传的文件库和正常运行数据库，web应用程序的服务器分开，用两个服务器，就可以初步防住这个问题。<br><strong>下面我们来看一下这道题哈</strong><br><img src="/2019/04/14/dvwa-xue-xi-low/7.png" alt="文件上传_题"><br>这就是题了，看起来很简单，没有太多多余的东西。<br>这个界面是我已经上传完东西的界面，只选了一个txt文件而没有选可执行文件，是模拟人生4的作弊码==<br>可以看见上面还有路径，是一个相对路径，绝对路径的话可能就有点傻了。。。<br>现在的url是<code>http://127.0.0.1/DVWA-master/vulnerabilities/upload/#</code>，绝对路径是<code>../../hackable/uploads/SIMS4.txt</code>，简单地说，把这个路径填到原url后面就可以了。我还额外试了一下，没有太多的路径穿越，比如到根目录底下什么的（多几个../../../）。<br><img src="/2019/04/14/dvwa-xue-xi-low/8.png" alt="文件上传_成功"><br>这就是成功了，首先你能直接访问到它，那就是上去了，能不能执行那是另一回事了。<br><img src="/2019/04/14/dvwa-xue-xi-low/9.png" alt="文件上传_不知道起啥名"><br>直接访问是不能利用它的，如果是二进制文件，就会把文件内容回显屏幕，如果是可执行文件，就会下载。<br><img src="/2019/04/14/dvwa-xue-xi-low/10.png" alt="文件上传_正确利用_1"><br><img src="/2019/04/14/dvwa-xue-xi-low/11.png" alt="文件上传_正确利用_2"><br>以上为一般性的利用细节，一句话，中国菜刀连接，触发马，拿下shell。</p>
 </blockquote>
+<h2 id="Insecure-CAPTCHA"><a href="#Insecure-CAPTCHA" class="headerlink" title="Insecure CAPTCHA"></a>Insecure CAPTCHA</h2><p>机器有点小问题，略过略过。</p>
 
             </div>
             <hr>
