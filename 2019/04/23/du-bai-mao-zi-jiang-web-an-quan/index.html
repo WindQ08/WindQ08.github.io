@@ -4,10 +4,9 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="DVWA学习(low), WindQ">
-    <meta name="description" content="        
-Brute Force暴力破解，很简单，burp加载一下常用的用户名密码字典，跑就完了。
-Command Injection命令注入，根据我这篇文章的第二条（我就是“这篇文章”），其实命令注入，就是在一个注入点正常所允许的">
+    <meta name="keywords" content="读《白帽子讲Web安全》, WindQ">
+    <meta name="description" content="道哥吴翰清的《白帽子讲Web安全》，刚选完专业就买了，当时没怎么看懂，陆陆续续的看了这么久也没看完，现在重抠一遍这本书，留个记录。
+第一章第二章">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +14,7 @@ Command Injection命令注入，根据我这篇文章的第二条（我就是“
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>DVWA学习(low) | WindQ</title>
+    <title>读《白帽子讲Web安全》 | WindQ</title>
     <link rel="icon" type="image/jpeg" href="/favicon.jpg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -259,13 +258,13 @@ Command Injection命令注入，根据我这篇文章的第二条（我就是“
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        DVWA学习(low)
+                        读《白帽子讲Web安全》
                     </div>
                 </div>
             </div>
@@ -374,13 +373,9 @@ Command Injection命令注入，根据我这篇文章的第二条（我就是“
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/Web环境练习/" target="_blank">
-                                <span class="chip bg-color">Web环境练习</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -400,21 +395,21 @@ Command Injection命令注入，根据我这篇文章的第二条（我就是“
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-04-14
+                    2019-04-23
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        2.1k
+                        61
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        7 分
+                        1 分
                     </div>
                     
                 
@@ -425,36 +420,8 @@ Command Injection命令注入，根据我这篇文章的第二条（我就是“
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <a id="more"></a>        
-<h2 id="Brute-Force"><a href="#Brute-Force" class="headerlink" title="Brute Force"></a>Brute Force</h2><p>暴力破解，很简单，burp加载一下常用的用户名密码字典，跑就完了。</p>
-<h2 id="Command-Injection"><a href="#Command-Injection" class="headerlink" title="Command Injection"></a>Command Injection</h2><p>命令注入，根据我这篇文章的第二条<a href="https://windq08.github.io/2019/04/14/wo-zi-ji-guan-yu-an-quan-de-yi-dian-xiang-fa-chi-xu-geng-xin/" title="我自己对安全的一点想法">（我就是“这篇文章”）</a>，其实命令注入，就是在一个注入点正常所允许的服务范围之外加点额外的东西。比如本题，提示是<code>Enter an IP address:</code>，我们输入一个IP后发现其实是执行了<code>ping</code>命令的回显，那么首先想到的是在完成<code>ping</code>的指令后我们还可以通过命令拼接让它再执行一些别的命令。<br><img src="/2019/04/14/dvwa-xue-xi-low/1.png" alt="命令注入"><br><strong>然后，让我们来学习一下常见的命令拼接的手段！！！！我研究好半天呢！！！</strong></p>
-<h3 id><a href="#" class="headerlink" title="|"></a><code>|</code></h3><p>管道命令<br>例：<code>dir . /s/a | find /c &quot;.exe&quot;</code> 先执行<code>dir</code>命令，然后对输出结果（<code>stdout</code>）执行<code>find</code>命令（输出当前文件夹及所有子文件夹里的.exe文件的个数）。</p>
-<h3 id="-1"><a href="#-1" class="headerlink" title="||"></a><code>||</code></h3><p>顺序执行多条命令，当碰到执行正确的命令后将不执行后面的命令。</p>
-<h3 id="amp"><a href="#amp" class="headerlink" title="&amp; / ;"></a><code>&amp; / ;</code></h3><p>bat中是使用<code>&amp;</code>,bash中使用<code>;</code><br>表示简单的拼接，前后命令语句没有制约关系。</p>
-<h3 id="amp-amp"><a href="#amp-amp" class="headerlink" title="&amp;&amp;"></a><code>&amp;&amp;</code></h3><p>先执行前面的命令，后执行后执行后面的命令。</p>
-<p><em>注：记得在符号两侧加上空格。</em></p>
-<p>看完了这个，low级别的命令注入就很简单了，简单的命令拼接就可以搞定。</p>
-<p>附：<a href="https://www.cnblogs.com/accumulater/p/7110811.html" target="_blank" rel="noopener">Windows常用命令大全</a></p>
-<h2 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h2><p>CSRF是啥呢，简而言之就是用另一个人的身份做不应该自己做的事情。比如有一个用户S，我用自己的账号找到了一个网站上修改个人信息的链接，我截住这个发出请求的数据包，改变其中的某些参数，比如把自己的ID改成用户S的ID，诸如此类，然后把这个数据包在Burp中封成CSRF用链接，再把这个链接发给用户S，他若点开了，就是用他的身份做了这件事。</p>
-<p>专业解释（上面的是领会精神）：<code>CSRF</code>，全称<code>Cross-site request forgery</code>，翻译过来就是跨站请求伪造，是指利用受害者尚未失效的身份认证信息（cookie、会话等），诱骗其点击恶意链接或者访问包含攻击代码的页面，在受害人不知情的情况下以受害者的身份向（身份认证信息所对应的）服务器发送请求，从而完成非法操作（如转账、改密等）。CSRF与XSS最大的区别就在于，CSRF并没有盗取cookie而是直接利用。在2013年发布的新版OWASP Top 10中，CSRF排名第8。</p>
-<p>然后让我们来看一下这道题<br><img src="/2019/04/14/dvwa-xue-xi-low/2.png" alt="CSRF"><br>很简单，输入密码，确认密码，就可以完成了，没有做任何防护。我们来看一下数据包。<br><img src="/2019/04/14/dvwa-xue-xi-low/3.png" alt="CSRF"><br>可以看出来这个请求的地址是</p>
-<pre class=" language-bash"><code class="language-bash">GET /DVWA-master/vulnerabilities/csrf/?password_new<span class="token operator">=</span>123123<span class="token operator">&amp;</span>password_conf<span class="token operator">=</span>123123<span class="token operator">&amp;</span>Change<span class="token operator">=</span>Change HTTP/1.1
-</code></pre>
-<p>谁要是点了这个，密码就会被改成123123了（当然是在理想情况下）。</p>
-<h2 id="File-Inclusion"><a href="#File-Inclusion" class="headerlink" title="File Inclusion"></a>File Inclusion</h2><p>文件包含，远程包含的话要把配置文件里<code>allow_url_include</code>，<code>allow_url_fopen</code>参数要设置成<code>On</code>。运气好的话可以执行包含后的代码，php漏洞居多。<br>有以下函数，且参数（文件）是可控的，就可以操作</p>
-<blockquote>
-<p>include(如果找不到文件，会警告)<br>require(如果找不到文件，会报错)<br>include_once()<br>require_once()</p>
-</blockquote>
-<p>接下来我们看一下这道题<br><img src="/2019/04/14/dvwa-xue-xi-low/4.png" alt="文件包含_题"><br>给了三个文件…不重要，没有啥太重要的信息，我们来看一下url<br><img src="/2019/04/14/dvwa-xue-xi-low/5.png" alt="文件包含_url"><br>这个4是我改过的，正常的话只到3。（提一下，按理说page是执行，file是文件读取，即不能操作，只能读那种）<br>很明显我们没有看file4.php的权限，但我认为按理说file4是存在的，于是我改了参数，也确实成功了，存在文件4，且我们有权浏览它，如下图<br><img src="/2019/04/14/dvwa-xue-xi-low/6.png" alt="文件包含_file4.php"><br>文件包含比较常见的是和目录穿越用在一起，如果是执行漏洞，可以<code>http://192.168.80.140/fileincl/example1.php?page=http://192.168.80.140/upload/images/webshell.php?cmd=ls</code><br>如果是读取漏洞，可以<code>http://192.168.80.140/dirtrav/example1.php?file=../../../../../../../../etc/passwd</code></p>
-<h2 id="File-Upload"><a href="#File-Upload" class="headerlink" title="File Upload"></a>File Upload</h2><p>文件上传，就是指网络攻击者上传了一个可执行的文件到服务器并执行，这里上传的文件可以是木马,病毒,恶意脚本或者WebShell等。我觉得最重要的有三个条件：</p>
-<blockquote>
-<p>1.就是真的能上传上去<br>2.上传文件之后能找到文件的位置和文件名<br>3.这个文件能被成功执行</p>
-</blockquote>
-<p>没有这三个条件就难以利用。相对应的，如果能不让攻击者找到目标文件位置，或者重命名这个文件，再或者不给可执行权限，再再或者把上传的文件库和正常运行数据库，web应用程序的服务器分开，用两个服务器，就可以初步防住这个问题。<br><strong>下面我们来看一下这道题哈</strong><br><img src="/2019/04/14/dvwa-xue-xi-low/7.png" alt="文件上传_题"><br>这就是题了，看起来很简单，没有太多多余的东西。<br>这个界面是我已经上传完东西的界面，只选了一个txt文件而没有选可执行文件，是模拟人生4的作弊码==<br>可以看见上面还有路径，是一个相对路径，绝对路径的话可能就有点傻了。。。<br>现在的url是<code>http://127.0.0.1/DVWA-master/vulnerabilities/upload/#</code>，绝对路径是<code>../../hackable/uploads/SIMS4.txt</code>，简单地说，把这个路径填到原url后面就可以了。我还额外试了一下，没有太多的路径穿越，比如到根目录底下什么的（多几个../../../）。<br><img src="/2019/04/14/dvwa-xue-xi-low/8.png" alt="文件上传_成功"><br>这就是成功了，首先你能直接访问到它，那就是上去了，能不能执行那是另一回事了。<br><img src="/2019/04/14/dvwa-xue-xi-low/9.png" alt="文件上传_不知道起啥名"><br>直接访问是不能利用它的，如果是二进制文件，就会把文件内容回显屏幕，如果是可执行文件，就会下载。<br><img src="/2019/04/14/dvwa-xue-xi-low/10.png" alt="文件上传_正确利用_1"><br><img src="/2019/04/14/dvwa-xue-xi-low/11.png" alt="文件上传_正确利用_2"><br>以上为一般性的利用细节，一句话，中国菜刀连接，触发马，拿下shell。</p>
-<h2 id="Insecure-CAPTCHA"><a href="#Insecure-CAPTCHA" class="headerlink" title="Insecure CAPTCHA"></a>Insecure CAPTCHA</h2><p>机器有点小问题，略过略过。</p>
-<h2 id="SQL-Injection"><a href="#SQL-Injection" class="headerlink" title="SQL Injection"></a>SQL Injection</h2><h3 id="sql注入概述"><a href="#sql注入概述" class="headerlink" title="sql注入概述"></a>sql注入概述</h3><p>SQL注入，sql注入是什么呢，好久没看了，来复习一下。（指着复习完了去挖漏洞试试手呢）<br>有一种东西叫数据库，我们平常怎么从数据库里调数据出来呢，是通过一种叫sql语言的东西。sql作为一种解释型语言，在运行时是由一个运行时组件解释语言代码并执行其中包含的指令的语言。（这段话其实我也不太懂）我们平常输入的数据会放在表单里提交给服务器，然后和内置的sql语言合并成一句最终版，再提交给数据库，最后依这句最终版的sql语句从数据库里查询数据。这中间就有可操作的地方了，比如像命令，代码注入一样，拼接或是用别的手段，使其能完成我们想要完成的工作。<br>举个小例子：比如我们有一个数据库表，如下<br><img src="/2019/04/14/dvwa-xue-xi-low/表格1.png" alt="数据库表"><br>然后我们输入<br><code>SELECT * FROM Persons WHERE City=&#39;Beijing&#39;  #意思是从Persons表里获取city列里数据为beijing的内容</code><br>然后我们会得到这个<br><img src="/2019/04/14/dvwa-xue-xi-low/表格2.png" alt="数据库表_city_beijing"><br>这就是正常的sql语句运行的过程。<br><strong>那么sql注入的概念是啥呢？</strong><br>假如有一个网页，非常简单，如下：<br><img src="/2019/04/14/dvwa-xue-xi-low/SQL注入网页图.png" alt="示范网页"><br>我们输入<code>Beijing</code>，那么后台拼接的sql语句就是<code>SELECT * FROM Persons WHERE City=&#39;Beijing&#39;</code>，按理说这个网页仅允许我们查询和城市相关的内容，但如果我们想搞点小破坏（拖数据应该不算啥小破坏），我们在后面的语句加上一段<code>&#39;union select * from persons where lastname=&#39;Adams&#39;#</code>：<br>我们的输入：<code>Beijing&#39;union select * from persons where lastname=&#39;Adams&#39;#</code><br>拼接后变成：<code>SELECT * FROM Persons WHERE City=&#39;Beijing&#39; union select * from persons where lastname=&#39;Adams&#39;#</code><br>我们会得到：<br><img src="/2019/04/14/dvwa-xue-xi-low/表格3.png" alt="数据库表_注入成功"><br>这样就套出了数据库里其他的东西，也就是sql注入了。<br><em>注：星号表示“所有的”；<code>biejing</code>后面加<code>&#39;</code>（单引号）是为了闭合前面的单引号，继续我们的工作；<code>union</code>是拼接符，拼接前后两个语句；<code>#</code>是注释符，意义是把后面原有的sql语句全都注释掉，不干扰，不起冲突。另：一般sql大小写不敏感。</em></p>
-<h3 id="重新回到题上"><a href="#重新回到题上" class="headerlink" title="重新回到题上"></a>重新回到题上</h3><p>Beijing’ union select * from Surname where Surname=’admin’#<br>Table ‘dvwa.surname’ doesn’t exist</p>
-
+                <p>道哥吴翰清的《白帽子讲Web安全》，刚选完专业就买了，当时没怎么看懂，陆陆续续的看了这么久也没看完，现在重抠一遍这本书，留个记录。</p>
+<h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><h2 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h2>
             </div>
             <hr>
 
@@ -477,7 +444,7 @@ Command Injection命令注入，根据我这篇文章的第二条（我就是“
                     </span>
                     <a href="http://windq08.github.io" class="b-link-green">WindQ</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/04/14/dvwa-xue-xi-low/" class="b-link-green">DVWA学习(low)</a>
+                    <a href="/2019/04/23/du-bai-mao-zi-jiang-web-an-quan/" class="b-link-green">读《白帽子讲Web安全》</a>
                 </p>
             </div>
         </div>
@@ -500,45 +467,38 @@ Command Injection命令注入，根据我这篇文章的第二条（我就是“
         
         <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/04/14/wo-zi-ji-guan-yu-an-quan-de-yi-dian-xiang-fa-chi-xu-geng-xin/">
+                <a href="/2019/04/23/du-bai-mao-zi-jiang-web-an-quan/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="我自己关于安全的一点想法(持续更新)">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="读《白帽子讲Web安全》">
                         
-                        <span class="card-title">我自己关于安全的一点想法(持续更新)</span>
+                        <span class="card-title">读《白帽子讲Web安全》</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">        
-1.好像是道哥在《白帽子……（最经典那本）》里说的，安全的前提是信任。没有绝对的安全，一切的安全都建立在信任的基础上，比如我们信任使用账号的正是他本人，然后我们把信息给他看，如果这个信任条件不成立，那就不是安全的。
-2.我</div>
+                    <div class="summary">道哥吴翰清的《白帽子讲Web安全》，刚选完专业就买了，当时没怎么看懂，陆陆续续的看了这么久也没看完，现在重抠一遍这本书，留个记录。
+第一章第二章</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-14
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-23
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/杂记/" class="post-category" target="_blank">
-                                    杂记
+                            <a href="/categories/Web安全/" class="post-category" target="_blank">
+                                    Web安全
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/个人感悟/" target="_blank">
-                        <span class="chip bg-color">个人感悟</span>
-                    </a>
-                    
-                </div>
+
                 
             </div>
         </div>
@@ -549,28 +509,27 @@ Command Injection命令注入，根据我这篇文章的第二条（我就是“
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/04/13/zhan-yi-chu-san/">
+                <a href="/2019/04/16/wang-zhan-shen-tou-ce-shi-yuan-li-ji-xiang-xi-guo-cheng/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="栈溢出（三）">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="网站渗透测试原理及详细过程">
                         
-                        <span class="card-title">栈溢出（三）</span>
+                        <span class="card-title">网站渗透测试原理及详细过程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">        
-一、了解一下libc　　libc动态链接库中的函数被广泛使用，所以有大概率可以在内存中找到libc动态库。该库内包含了一些系统级的函数，比如system()，所以可以尝试用这些系统级的函数取得控制权。再比如，这样的参数有可</div>
+                    <div class="summary">此处省略了原文的’零’，’一’，’二’，有兴趣的可以点文章最下面的原文链接查看，本文仅作为纯技术方面的个人总结。一、信息收集（历来测试第一条，铁打的信息收集）1.网络(公开)信息收集直接进行网络扫描不是这一步要干的事，循序渐进才对。先找一些</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-13
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-16
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/二进制安全/" class="post-category" target="_blank">
-                                    二进制安全
+                            <a href="/categories/Web安全/" class="post-category" target="_blank">
+                                    Web安全
                                 </a>
                             
                             
@@ -580,8 +539,8 @@ Command Injection命令注入，根据我这篇文章的第二条（我就是“
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/栈溢出/" target="_blank">
-                        <span class="chip bg-color">栈溢出</span>
+                    <a href="/tags/渗透测试/" target="_blank">
+                        <span class="chip bg-color">渗透测试</span>
                     </a>
                     
                 </div>
