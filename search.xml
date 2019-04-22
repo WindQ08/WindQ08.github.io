@@ -18,6 +18,16 @@
       </categories>
       
       
+        <tags>
+            
+            <tag> 个人感悟 </tag>
+            
+            <tag> 学习笔记 </tag>
+            
+            <tag> 成长 </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -66,6 +76,10 @@
             
             <tag> 个人感悟 </tag>
             
+            <tag> 学习笔记 </tag>
+            
+            <tag> 成长 </tag>
+            
         </tags>
       
     </entry>
@@ -90,6 +104,8 @@
         <tags>
             
             <tag> Web环境练习 </tag>
+            
+            <tag> DVWA </tag>
             
         </tags>
       
