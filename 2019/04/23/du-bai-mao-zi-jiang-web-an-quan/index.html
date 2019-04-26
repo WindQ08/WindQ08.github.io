@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="keywords" content="读《白帽子讲Web安全》, WindQ">
     <meta name="description" content="道哥吴翰清的《白帽子讲Web安全》，刚选完专业就买了，当时没怎么看懂，陆陆续续的看了这么久也没看完，现在重抠一遍这本书，留个记录。
-第一章第二章">
+第一章第二章第一次看的时候没怎么注意，这回我们来抠一下同源策略这个概念。1.同源策略（Same origin">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -414,14 +414,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        61
+                        691
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        1 分
+                        2 分
                     </div>
                     
                 
@@ -433,7 +433,8 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>道哥吴翰清的《白帽子讲Web安全》，刚选完专业就买了，当时没怎么看懂，陆陆续续的看了这么久也没看完，现在重抠一遍这本书，留个记录。</p>
-<h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><h2 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h2>
+<h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><h2 id="第二章"><a href="#第二章" class="headerlink" title="第二章"></a>第二章</h2><p>第一次看的时候没怎么注意，这回我们来抠一下同源策略这个概念。<br>1.同源策略（Same origin policy）是一种约定，它是浏览器最核心也最基本的安全功能，如果缺少了同源策略，则浏览器的正常功能可能都会受到影响。可以说Web是构建在同源策略基础之上的，浏览器只是针对同源策略的一种实现。<br>假设现在没有同源策略，会发生什么呢？JavaScript可以做很多东西，比如读取/修改网页中某个值。比如你在一个tab窗口中打开了了银行网站，在另外一个tab窗口中打开了一个恶意网站，而那个恶意网站挂了一个的专门修改银行信息的JavaScript，当你访问这个恶意网站并且执行它JavaScript时，你的银行页面就会被这个JavaScript修改。<br>2.同源策略是对javascript代码能够操作那些web内容的一条完整的安全限制。当web页面使用多个iframe元素或者打开多个窗体的时候，这一策略就会发生作用。<br>3.所谓同源是指，域名，协议，端口都相同，这样才算同源。<br>当一个浏览器的两个tab页中分别打开来 百度和谷歌的页面，当浏览器的百度tab页执行一个脚本的时候会检查这个脚本是属于哪个页面的，即检查是否同源，只有和百度同源的脚本才会被执行。<br>如果非同源，那么在请求数据时，浏览器会在控制台中报一个异常，提示拒绝访问。同源策略是浏览器的行为，是为了保护本地数据不被JavaScript代码获取回来的数据污染，因此拦截的是客户端发出的请求回来的数据接收，即请求发送了，服务器响应了，但是无法被浏览器接收。<br>4.检测同源的时候，比如加载脚本，脚本存放的域不重要，加载脚本的是哪个域才重要，比如<code>a.com</code>加载了存放在<code>b.com</code>的js，这个js的源是<code>a.com</code>。也就是说，谁加载的脚本，动谁的页面，别人家的不许动。<br>5.<script>, <img>, <iframe>, <link>等标签都可以跨域加载资源，而不受同源策略的限制。（这应该也是XSS跨站脚本攻击的基础吧）</p>
+<h2 id="注入"><a href="#注入" class="headerlink" title="注入"></a>注入</h2></script></p>
             </div>
             <hr>
 
@@ -493,7 +494,7 @@
                 </a>
                 <div class="card-content article-content">
                     <div class="summary">道哥吴翰清的《白帽子讲Web安全》，刚选完专业就买了，当时没怎么看懂，陆陆续续的看了这么久也没看完，现在重抠一遍这本书，留个记录。
-第一章第二章</div>
+第一章第二章第一次看的时候没怎么注意，这回我们来抠一下同源策略这个概念。1.同源策略（Same origin</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-23
@@ -688,7 +689,7 @@
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">6.2k</span>
+                <span class="white-color">7.8k</span>
             
 
             
