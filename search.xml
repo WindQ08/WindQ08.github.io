@@ -4,19 +4,6 @@
   
     
     <entry>
-      <title></title>
-      <link href="/2019/06/01/ao-ao-suo-duo/"/>
-      <url>/2019/06/01/ao-ao-suo-duo/</url>
-      
-        <content type="html"><![CDATA[<h2 id="一、信息收集"><a href="#一、信息收集" class="headerlink" title="一、信息收集"></a>一、信息收集</h2><p>　　1.可以看见，原网站下面有一个客服电话，这就是一个信息<br>客服电话：<code>17702979181</code><br>百度这个电话可以查得：这是一个西安的电信号码，相关信息基本都与房地产相关，机主姓名：黄经稳<br><img src="https://pic1.ajkimg.com/display/anjuke/81b857065d5648f1576771f40f4b0d30/600x796x0x57/100x133.jpg" alt="机主/网站主人照片"><br>　　2.电话下面有网站所属，即“西安爱家屋”<br>　　3.whois唯一有用的信息是本ip上只有这一个域名。<br>　　4.在百度下搜索西安爱家屋，发现有两个，第一个是橱柜，第二个是房地产。房地产相关的应该才是我们的目标。<br>房地产相关的搜索结果来源是天眼查，注册法人是黄经稳，监事是白晓雷。50w的小公司，2018年4月21日成立。<br>黄经稳，邮箱<a href="mailto:1637478949@qq.com" target="_blank" rel="noopener">1637478949@qq.com</a>，第二个电话<code>13008830882（广东深圳）</code>，登记网址是<code>www.ifamilyhouse.com（打开是nginx的欢迎页面）</code>，ip是<code>118.24.234.251（上海市联通）</code>，<code>47.74.248.20</code>的ip地址是香港，<strong>阿里云服务器</strong>。（心凉一半，阿里云的服务器咋个整）<br>　　5.用nmap扫了一下所有端口（<code>nmap -p 1-65535 47.74.248.20</code>）。<br>22（<code>ssh</code>），80（<code>http</code>），3000（<code>ppp</code>），3306（<code>mysql</code>），11369（<code>不知道干啥用的</code>）端口是开放的。<br>nmap执行命令<code>nmap -O 47.74.248.20</code>，扫描结果中端口方面同上，其他结果如下：           </p><pre class=" language-bash"><code class="language-bash">Device type: general purpose           Running: Linux 4.X              OS CPE: cpe:/o:linux:linux_kernel:4.4           OS details: Linux 4.4</code></pre><p>　　6.子域名<br>御剑扫描，只有两个，一个是主页面：/index.php（可知是php）<br>另一个是：/robots.txt（没什么价值）<br>　　7.还想收集信息可能就得靠社工了，如果需求什么关键信息再考虑。            </p><h2 id="二、尝试渗透"><a href="#二、尝试渗透" class="headerlink" title="二、尝试渗透"></a>二、尝试渗透</h2><p>　　1.第一眼就看见mysql远程服务的3306是开着的，尝试用命令行的简单mysql语句登录，如下：            </p><pre class=" language-bash"><code class="language-bash">C:\Users\HP<span class="token operator">></span>mysql -h 47.74.248.20 -P 3306 -u root -p rootEnter password: ****ERROR 1045 <span class="token punctuation">(</span>28000<span class="token punctuation">)</span>: Access denied <span class="token keyword">for</span> user <span class="token string">'root'</span>@<span class="token string">'117.32.216.11'</span> <span class="token punctuation">(</span>using password: YES<span class="token punctuation">)</span></code></pre><p>　　说明的确连接上了，只是密码不对劲。如此尝试了很多次，每次都是密码不对，但并未禁止登录或者封ip，于是想到用msf里的mysql_login模块去破解它。<br>但每次破解都是只尝试了三次就终止了，提示如下：<code>Unable to Connect: unknown charset number: 224</code><br>查了一下，应该是目标的mysql用了utf-8mb4字符集，导致无法连接。更改目标的设置是不太现实的，访问不到.ini文件，于是想是否能修改工具脚本里的字符集设置？还在研究学习中，暂时无成果。<br>（如果不成功，第二个想法是尝试自己猜解口令，看他两个网站的专业程度，应该是本人管理，也可以尝试从另一个网站入手。还没尝试另一个是不是也用了utf-8mb4的字符集，如果可以破解的话，说不定两个口令是同一个，其他的设置也是相同或者类似的）<br>　　<code>47.74.248.20</code>的mysql3306爆破基本失败。<br>　　2.第二眼看见的是提供<code>ssh</code>服务的22端口，尝试一下爆破它。<br>3.ppp是啥服务？<br>4.能否查出中间件的版本？如果能的话看看对应的有什么版本漏洞没有。</p>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>读《白帽子讲Web安全》笔记兼部分基本漏洞学习说明</title>
       <link href="/2019/04/23/du-bai-mao-zi-jiang-web-an-quan/"/>
       <url>/2019/04/23/du-bai-mao-zi-jiang-web-an-quan/</url>
