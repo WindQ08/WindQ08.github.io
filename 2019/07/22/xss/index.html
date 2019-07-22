@@ -4,8 +4,9 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="XSS, 纪老妖">
-    <meta name="description" content="XSS | 纪老妖">
+    <meta name="keywords" content="XSS, 妖窝">
+    <meta name="description" content="最近在挖洞实战，整个渗透的流程已经总结得差不多了，发掘一个新的漏洞肯定还是有难度，但已经出现过的经典漏洞是不能掌握得不好的，这篇文章用来记录对XSS的学习。
+XSS的基础知识XSS定义　　XSS（跨站脚本攻击），恶意攻击者往Web页面里插入">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>XSS | 纪老妖</title>
+    <title>XSS | 妖窝</title>
     <link rel="icon" type="image/jpeg" href="/favicon.jpg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -41,7 +42,7 @@
                     
                     <img src="/medias/logo.jpg" class="logo-img" alt="LOGO">
                     
-                    <span class="logo-span">纪老妖</span>
+                    <span class="logo-span">妖窝</span>
                 </a>
             </div>
             
@@ -116,7 +117,7 @@
         
         <img src="/medias/logo.jpg" class="logo-img circle responsive-img">
         
-        <div class="logo-name">纪老妖</div>
+        <div class="logo-name">妖窝</div>
         <div class="logo-desc">
             
             纪老妖其实就是个...ID嘛，在哪都能搜到我的
@@ -372,12 +373,33 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Web安全/" target="_blank">
+                                <span class="chip bg-color">Web安全</span>
+                            </a>
+                        
+                            <a href="/tags/经典漏洞/" target="_blank">
+                                <span class="chip bg-color">经典漏洞</span>
+                            </a>
+                        
+                            <a href="/tags/XSS/" target="_blank">
+                                <span class="chip bg-color">XSS</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Web安全/" class="post-category" target="_blank">
+                                Web安全
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -392,14 +414,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        0
+                        1.3k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        1 分
+                        4 分
                     </div>
                     
                 
@@ -410,7 +432,15 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <p><strong>最近在挖洞实战，整个渗透的流程已经总结得差不多了，发掘一个新的漏洞肯定还是有难度，但已经出现过的经典漏洞是不能掌握得不好的，这篇文章用来记录对XSS的学习。</strong></p>
+<h2 id="XSS的基础知识"><a href="#XSS的基础知识" class="headerlink" title="XSS的基础知识"></a>XSS的基础知识</h2><h3 id="XSS定义"><a href="#XSS定义" class="headerlink" title="XSS定义"></a>XSS定义</h3><p>　　XSS（跨站脚本攻击），恶意攻击者往Web页面里插入恶意html代码，当用户浏览该页之时，嵌入其中Web里面的html代码会被执行，从而达到恶意攻击用户的目的。</p>
+<h3 id="学习XSS需要掌握的"><a href="#学习XSS需要掌握的" class="headerlink" title="学习XSS需要掌握的"></a>学习XSS需要掌握的</h3><h4 id="1-JavaScript，一种脚本语言"><a href="#1-JavaScript，一种脚本语言" class="headerlink" title="1.JavaScript，一种脚本语言"></a>1.JavaScript，一种脚本语言</h4><p>　　关于JS可以看看<a href="http://www.w3school.com.cn/js/index.asp" target="_blank" rel="noopener">这个</a>，js入门很简单，这里不过多阐述。和html一样，至少要了解基本语法。</p>
+<h4 id="2-HTML，超文本标记语言"><a href="#2-HTML，超文本标记语言" class="headerlink" title="2.HTML，超文本标记语言"></a>2.HTML，超文本标记语言</h4><p>学习HTML可以看看<a href="http://www.w3school.com.cn/html/index.asp" target="_blank" rel="noopener">这个</a>，html需要了解一下基础，至少基础的语法，常用的标签都是怎么用的，干吗用的需要了解。</p>
+<h4 id="3-Cookie-Session机制"><a href="#3-Cookie-Session机制" class="headerlink" title="3.Cookie/Session机制"></a>3.Cookie/Session机制</h4><p>　　会话（Session）跟踪是Web程序中常用的技术，用来跟踪用户的整个会话。常用的会话跟踪技术是Cookie与Session。Cookie通过在客户端记录信息确定用户身份，Session通过在服务器端记录信息确定用户身份。<br>　　理论上，一个用户的所有请求操作都应该属于同一个会话，另一个用户的所有请求操作属于另一个会话，两者不能混淆。<br>　　但web程序时使用http协议传输的，http协议是无状态的协议，一旦数据交互完毕，客户端服务器端的连接就会关闭，再次交换数据就又是一次新的连接，也就是说服务器端没法在连接这条路子上跟踪会话。</p>
+<h5 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h5><p>　　Cookie实际上是一小段的文本信息，是一个通行证。客户端请求服务器，如果服务器需要记录该用户状态，就使用response向客户端浏览器颁发一个Cookie。客户端浏览器会把Cookie保存起来。当浏览器再请求该网站时，浏览器把请求的网址连同该Cookie一同提交给服务器。服务器检查该Cookie，以此来辨认用户状态。服务器还可以根据需要修改Cookie的内容。查看某个网站颁发的Cookie很简单。在浏览器地址栏输入JavaScript:alert (document. cookie)就可以了（需要有网才能查看）。用burp抓包实施某些操作时也能看见，会放在数据包里。<br>　　不同的浏览器采用不同的方式保存Cookie。IE浏览器会在“C:\Documents and Settings\你的用户名\Cookies”文件夹下以文本文件形式保存，一个文本文件保存一个Cookie。<br>　　Cookie具有不可跨域名性，根据Cookie规范（以百度谷歌为例），浏览器访问Google只会携带Google的Cookie，而不会携带Baidu的Cookie。Google也只能操作Google的Cookie，而不能操作Baidu的Cookie。浏览器判断一个网站是否能操作另一个网站Cookie的依据是域名，同属一域名的不同子域名之间都不能互相操作彼此的cookie。<br>　　注：W3C标准的浏览器会阻止JavaScript读写任何不属于自己网站的Cookie。换句话说，A网站的JavaScript程序读写B网站的Cookie不会有任何结果。<br>　　<em>在某些情况下，盗取了某人的cookie就能在某网站上冒充某用户。</em></p>
+<h5 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h5><p>　　Session是另一种记录客户状态的机制，不同的是Cookie保存在客户端浏览器中，而Session保存在服务器上。客户端浏览器访问服务器的时候，服务器把客户端信息以某种形式记录在服务器上。这就是Session。客户端浏览器再次访问时只需要从该Session中查找该客户的状态就可以了。<br>　　同一机器的两个浏览器窗口访问服务器时，会生成两个不同的Session。但是由浏览器窗口内的链接、脚本等打开的新窗口（也就是说不是双击桌面浏览器图标等打开的窗口）除外。这类子窗口会共享父窗口的Cookie，因此会共享一个Session。<br>　　注意：新开的浏览器窗口会生成新的Session，但子窗口除外。子窗口会共用父窗口的Session。例如，在链接上右击，在弹出的快捷菜单中选择“在新窗口中打开”时，子窗口便可以访问父窗口的Session。</p>
+<h4 id="4-同源策略"><a href="#4-同源策略" class="headerlink" title="4.同源策略"></a>4.同源策略</h4><p>　　所谓同源策略，指的是浏览器对不同源的脚本或者文本的访问方式进行的限制。比如源a的js不能读取或设置引入的源b的元素属性。同源的定义是指两个页面具有相同的协议，主机（也常说域名），端口，三个要素缺一不可。<br>　　不受限制的情况：页面中的链接，重定向以及表单提交（你在域名<a href="http://www.foo.com下面提交一个表单到www.bar.com是完全可以的）；跨域资源嵌入，当然，浏览器限制了Javascript不能读写加载的内容，如" target="_blank" rel="noopener">www.foo.com下面提交一个表单到www.bar.com是完全可以的）；跨域资源嵌入，当然，浏览器限制了Javascript不能读写加载的内容，如</a><script src="..."></script>，<img>，<link>，<iframe>等。</iframe></p>
+<h3 id="XSS的分类"><a href="#XSS的分类" class="headerlink" title="XSS的分类"></a>XSS的分类</h3><h4 id="反射型"><a href="#反射型" class="headerlink" title="反射型"></a>反射型</h4><h4 id="存储型"><a href="#存储型" class="headerlink" title="存储型"></a>存储型</h4><h4 id="DOM型"><a href="#DOM型" class="headerlink" title="DOM型"></a>DOM型</h4><h3 id="利用"><a href="#利用" class="headerlink" title="利用"></a>利用</h3><h2 id="XSS的绕过以及一些payload"><a href="#XSS的绕过以及一些payload" class="headerlink" title="XSS的绕过以及一些payload"></a>XSS的绕过以及一些payload</h2>
             </div>
             <hr>
 
@@ -431,7 +461,7 @@
                     <span class="reprint-tip">
                         <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
                     </span>
-                    <a href="http://windq08.github.io" class="b-link-green">纪老妖</a>
+                    <a href="http://windq08.github.io" class="b-link-green">妖窝</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
                     <a href="/2019/07/22/xss/" class="b-link-green">XSS</a>
                 </p>
@@ -469,20 +499,41 @@
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary"></div>
+                    <div class="summary">最近在挖洞实战，整个渗透的流程已经总结得差不多了，发掘一个新的漏洞肯定还是有难度，但已经出现过的经典漏洞是不能掌握得不好的，这篇文章用来记录对XSS的学习。
+XSS的基础知识XSS定义　　XSS（跨站脚本攻击），恶意攻击者往Web页面里插入</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2019-07-22
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-user fa-fw"></i>
-                            纪老妖
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Web安全/" class="post-category" target="_blank">
+                                    Web安全
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
 
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Web安全/" target="_blank">
+                        <span class="chip bg-color">Web安全</span>
+                    </a>
+                    
+                    <a href="/tags/经典漏洞/" target="_blank">
+                        <span class="chip bg-color">经典漏洞</span>
+                    </a>
+                    
+                    <a href="/tags/XSS/" target="_blank">
+                        <span class="chip bg-color">XSS</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -653,7 +704,7 @@
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">10.1k</span>
+                <span class="white-color">11.4k</span>
             
 
             
