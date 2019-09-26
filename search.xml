@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>App测试的一些常用测试点分享</title>
+      <link href="/2019/09/26/app-ce-shi-de-yi-xie-chang-yong-ce-shi-xiang-mu-fen-xiang/"/>
+      <url>/2019/09/26/app-ce-shi-de-yi-xie-chang-yong-ce-shi-xiang-mu-fen-xiang/</url>
+      
+        <content type="html"><![CDATA[<h1 id="划重点！！！"><a href="#划重点！！！" class="headerlink" title="划重点！！！"></a>划重点！！！</h1><h2 id="本着早期“黑客要有共享精神”和现在“安全人员技术共享”的原则，将知识分享给大家，一定不要干坏事哟！"><a href="#本着早期“黑客要有共享精神”和现在“安全人员技术共享”的原则，将知识分享给大家，一定不要干坏事哟！" class="headerlink" title="本着早期“黑客要有共享精神”和现在“安全人员技术共享”的原则，将知识分享给大家，一定不要干坏事哟！"></a>本着早期“黑客要有共享精神”和现在“安全人员技术共享”的原则，将知识分享给大家，一定不要干坏事哟！</h2><p><img src="/2019/09/26/app-ce-shi-de-yi-xie-chang-yong-ce-shi-xiang-mu-fen-xiang/APP测试常用测试点.png" alt="APP测试常用测试点">　</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Web安全 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> App测试 </tag>
+            
+            <tag> 渗透测试 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>XSS</title>
       <link href="/2019/07/22/xss/"/>
       <url>/2019/07/22/xss/</url>
