@@ -5,7 +5,7 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     <meta name="keywords" content="妖窝">
-    <meta name="description" content="一、概述　　对于所有安全相关的测试来说，信息收集都是我们必要的第一步，有时一次非常全面的信息收集甚至会占到一次测试总工程量的的80%到90%。交易所的测试也是一样，第一步信息收集，至关重要！接下来让我们看看在这样的测试中交易所有什么样的信息">
+    <meta name="description" content="一、概述　　对于所有安全相关的测试来说，信息收集都是我们非常重要且必要的第一步，有时一次非常全面的信息收集甚至会占到一次测试总工程量的的70%到80%，能为后续的工作节省大量精力，提供便利。交易所的测试也是一样，第一步信息收集，至关重要！接">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -392,14 +392,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        817
+                        1.1k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        2 分
+                        3 分
                     </div>
                     
                 
@@ -410,18 +410,40 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h2><p>　　对于所有安全相关的测试来说，信息收集都是我们必要的第一步，有时一次非常全面的信息收集甚至会占到一次测试总工程量的的80%到90%。交易所的测试也是一样，第一步信息收集，至关重要！接下来让我们看看在这样的测试中交易所有什么样的信息可供测试方收集利用，我们也会拿出一些具体的案例以供参考。</p>
+                <h2 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h2><p>　　对于所有安全相关的测试来说，信息收集都是我们非常重要且必要的第一步，有时一次非常全面的信息收集甚至会占到一次测试总工程量的的70%到80%，能为后续的工作节省大量精力，提供便利。交易所的测试也是一样，第一步信息收集，至关重要！接下来让我们看看在这样的测试中交易所有什么样的信息可供测试方收集利用，我们也会对其中几点加以说明，拿出一些具体的案例以供参考。</p>
 <h2 id="二、测试列表"><a href="#二、测试列表" class="headerlink" title="二、测试列表"></a>二、测试列表</h2><blockquote>
-<p>域名 Whois及备案信息采集(实际上很多交易所不用自己的姓名)<br>服务器真实 IP 发现(越过cdn，1.空域名无www 2.子域名 3.国外访问)<br>服务器指纹识别<br>子域探测<br>邮件服务探测<br>证书信息采集<br>Web服务组件指纹采集<br>Web网站目录探测<br>API接口信息泄露<br>端口服务组件指纹采集<br>旁服信息采集<br>C 段服务采集<br>GitHub 源码泄露发现<br>DNS记录分析(dig,dnsdict6,fierce)<br>搜索引擎(google,shodan,zoomeye)<br>企业信息(员工信息，组织框架，企业法人，企业综合信息)<br>敏感文件</p>
+<p>域名 Whois及备案信息采集(实际上很多交易所不用自己的姓名)</p>
+<p>服务器真实 IP 发现(越过cdn，1.空域名无www 2.子域名 3.国外访问)</p>
+<p>服务器指纹识别</p>
+<p>子域探测</p>
+<p>邮件服务探测</p>
+<p>证书信息采集</p>
+<p>Web服务组件指纹采集</p>
+<p>Web网站目录探测</p>
+<p>API接口信息泄露</p>
+<p>端口服务组件指纹采集</p>
+<p>旁服信息采集</p>
+<p>C 段服务采集</p>
+<p>GitHub 源码泄露发现</p>
+<p>DNS记录分析(dig,dnsdict6,fierce)</p>
+<p>搜索引擎(google,shodan,zoomeye)</p>
+<p>企业信息(员工信息，组织框架，企业法人，企业综合信息)</p>
+<p>敏感文件</p>
 </blockquote>
-<h2 id="三、案例分析"><a href="#三、案例分析" class="headerlink" title="三、案例分析"></a>三、案例分析</h2><h4 id="1-API接口信息泄露"><a href="#1-API接口信息泄露" class="headerlink" title="1.API接口信息泄露"></a>1.API接口信息泄露</h4><p>　　之前测试的某交易所，代码是外包公司所编写。最后在google上找到了外包公司编写代码时的留下的api文档，托管在某团队协作平台上。文档中详细地说明了api使用时用到的各种参数以及其类型，具体用处，并且遗留下了一些测试时使用的具体参数，对后续的测试提供了很大帮助。</p>
+<h2 id="三、案例分析"><a href="#三、案例分析" class="headerlink" title="三、案例分析"></a>三、案例分析</h2><h4 id="1-API接口信息泄露"><a href="#1-API接口信息泄露" class="headerlink" title="1.API接口信息泄露"></a>1.API接口信息泄露</h4><p>　　API的使用频率越来越高，占比也越来越重，所谓欲戴皇冠，必承其重，API一旦出了问题，带来的后果将是毁灭性的。在信息收集的领域，我们首先能接触到的就是自己API的具体使用参数等详情有没有被泄露出去了。</p>
+<p>　　这是之前零时科技XX实验室测试的某交易所，该公司的代码是外包公司所编写。信息收集期间，我方在google上找到了外包公司编写代码时的留下的，托管在某团队协作平台上api文档。文档中详细地说明了api使用时用到的各种参数及其类型和具体用处，并且在样例中遗留下了一些测试时使用的具体参数，对后续的测试提供了很大帮助。</p>
 <p><img src="/2019/11/05/guan-yu-xin-xi-shou-ji/api泄露.png" alt="API接口信息"></p>
-<h4 id="2-真实姓名：d球"><a href="#2-真实姓名：d球" class="headerlink" title="2.真实姓名：d球"></a>2.真实姓名：d球</h4><p>　　也是之前测试的某交易所，在whois上收集了门户网站的域名备案信息，找到了注册公司，最后根据注册公司找到了该公司经理(也是股东之一)的手机号，QQ号，微信号和注册人邮箱的一部分。虽然没有开展后续的社工等测试手段，但如果真正需要使用时，这些信息无疑会极高地提供成功率。<br><img src="/2019/11/05/guan-yu-xin-xi-shou-ji/D1.png" alt="222"><br><img src="/2019/11/05/guan-yu-xin-xi-shou-ji/D2.png" alt="222"></p>
-<h4 id="3-源码发现有没有ailink"><a href="#3-源码发现有没有ailink" class="headerlink" title="3.源码发现有没有ailink"></a>3.源码发现有没有ailink</h4><p>　　对于交易所所使用的源码的找寻同样是信息收集中重要的一环，毕竟，如果找到了源码，就可以进行审计工作，直接找寻编写源码时留下的漏洞会使得整个测试过程更加容易，减少了很大工作量，同时找到的问题和漏洞也会更加全面，具有针对性。</p>
+<h4 id="2-域名-Whois及备案信息采集"><a href="#2-域名-Whois及备案信息采集" class="headerlink" title="2.域名 Whois及备案信息采集"></a>2.域名 Whois及备案信息采集</h4><p>　　虽然现在已经有交易所注册域名时会使用域名注册商提供的服务，没有在Whois上泄露出公司或相关人员信息，但仍然是有一些交易所会“本尊”亲自注册域名，这时利用Whois或其它的工具就可以找到该交易所域名注册公司或相关人员的详细信息。而这些不起眼的信息对于后续的测试手段（如密码猜解，社会工程学攻击等）都会有很大帮助，可以大大提高其成功率。</p>
+<p>　　这是之前我方测试过的另一交易所，我方在Whois上收集了门户网站的域名备案信息，找到了其注册公司，而后又根据注册公司找到了该公司经理（也是股东之一）的手机号，QQ号，微信号和注册人邮箱的一部分。虽然没有开展后续的社工等测试手段，但如果真正需要使用时，这些信息无疑会极高地提高成功率，能让我们更从容，更轻松的撕开突破口，完成测试。</p>
+<p><img src="/2019/11/05/guan-yu-xin-xi-shou-ji/D1.png" alt="注册公司及人员信息"></p>
+<p><img src="/2019/11/05/guan-yu-xin-xi-shou-ji/D2.png" alt="注册公司及人员信息"></p>
+<h4 id="3-GitHub-源码泄露发现"><a href="#3-GitHub-源码泄露发现" class="headerlink" title="3.GitHub 源码泄露发现"></a>3.GitHub 源码泄露发现</h4><p>　　对于交易所所使用的源码的找寻同样是信息收集中重要的一环，毕竟，如果找到了源码，就可以进行审计工作，直接找寻编写源码时留下的漏洞会使得整个测试过程更加容易，减少了很大工作量，同时找到的问题和漏洞也会更加全面，具有针对性。</p>
 <p>　　如下是一家在交易所网站上找到的/.git源码文件。</p>
 <p><img src="/2019/11/05/guan-yu-xin-xi-shou-ji/源码.png" alt="222"></p>
-<h4 id="4-敏感文件（qitmeer）"><a href="#4-敏感文件（qitmeer）" class="headerlink" title="4.敏感文件（qitmeer）"></a>4.敏感文件（qitmeer）</h4><p>　　敏感文件有很多种，比如robots.txt，sitemap.xml等等。以下是两家交易所网站中robots.txt的部分详细信息，对于测试方来说，获得了这些信息就可以轻松地找到交易所网站中确实存在却不允许被轻易访问的敏感页面。如果这些页面存在某种规律或特点，甚至可以找到其使用的组件，CMS等其他信息，进而更有针对性地进行测试工作。</p>
-<p>　　<img src="/2019/11/05/guan-yu-xin-xi-shou-ji/hlc.png" alt="222"><br>　　<img src="/2019/11/05/guan-yu-xin-xi-shou-ji/hlc2.png" alt="222"></p>
+<p><strong>#### 4.敏感文件（qitmeer）</strong></p>
+<p>　　敏感文件有很多种，比如robots.txt，sitemap.xml等等。以下是两家交易所网站中robots.txt的部分详细信息，对于测试方来说，获得了这些信息就可以轻松地找到交易所网站中确实存在却不允许被轻易访问的敏感页面。如果这些页面存在某种规律或特点，甚至可以找到其使用的组件，CMS等其他信息，进而更有针对性地进行测试工作。</p>
+<p>　　<img src="/2019/11/05/guan-yu-xin-xi-shou-ji/hlc.png" alt="222"></p>
+<p>　　<img src="/2019/11/05/guan-yu-xin-xi-shou-ji/hlc2.png" alt="222"></p>
 
             </div>
             <hr>
@@ -481,7 +503,7 @@
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">一、概述　　对于所有安全相关的测试来说，信息收集都是我们必要的第一步，有时一次非常全面的信息收集甚至会占到一次测试总工程量的的80%到90%。交易所的测试也是一样，第一步信息收集，至关重要！接下来让我们看看在这样的测试中交易所有什么样的信息</div>
+                    <div class="summary">一、概述　　对于所有安全相关的测试来说，信息收集都是我们非常重要且必要的第一步，有时一次非常全面的信息收集甚至会占到一次测试总工程量的的70%到80%，能为后续的工作节省大量精力，提供便利。交易所的测试也是一样，第一步信息收集，至关重要！接</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2019-11-05
@@ -661,7 +683,7 @@
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">13.3k</span>
+                <span class="white-color">13.6k</span>
             
 
             
